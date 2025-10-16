@@ -1,0 +1,151 @@
+#def keerx(getal, x):
+#    print(int(getal) * int(x))
+#keerx(input("geef een getal:"), input("geef een ander getal:"))
+bord1 = [0, 0, 0]
+bord2 = [0, 0, 0]
+bord3 = [0, 0, 0]
+x = 1
+beurten = 9
+
+print("bl", "bm", "br")
+print("ml", "mm", "mr")
+print("ol", "om", "or")
+
+
+def b_k_e(x_o):
+    global bord1, bord2, bord3, x, beurten
+#    if beurten == 0:
+#        print(bord1)
+#        print(bord2)
+#        print(bord3)    
+    if x_o == "bl":
+        if bord1[0] == 0:
+            if x == 1:
+                bord1[0] = 1
+            else:
+                bord1[0] = 2
+        else:
+            print("plaats al bezet")
+            return
+            #b_k_e(input("waar zet je je zet:"))
+    elif x_o == "bm":
+        if bord1[1] == 0:
+            if x == 1:
+                bord1[1] = 1
+            else:
+                bord1[1] = 2
+        else:
+            print("plaats al bezet")
+            return
+            #b_k_e(input("waar zet je je zet:"))
+    elif x_o == "br":
+        if bord1[2] == 0:
+            if x == 1:
+                bord1[2] = 1
+            else:
+                bord1[2] = 2
+        else:
+            print("plaats al bezet")
+            return
+            #b_k_e(input("waar zet je je zet:"))
+    elif x_o == "ml":
+        if bord2[0] == 0:
+            if x == 1:
+                bord2[0] = 1
+            else:
+                bord2[0] = 2
+        else:
+            print("plaats al bezet")
+            return
+            #b_k_e(input("waar zet je je zet:"))
+    elif x_o == "mm":
+        if bord2[1] == 0:
+            if x == 1:
+                bord2[1] = 1
+            else:
+                bord2[1] = 2
+        else:
+            print("plaats al bezet")
+            return
+            #b_k_e(input("waar zet je je zet:"))
+    elif x_o == "mr":
+        if bord2[2] == 0:
+            if x == 1:
+                bord2[2] = 1
+            else:
+                bord2[2] = 2
+        else:
+            print("plaats al bezet")
+            return
+            #b_k_e(input("waar zet je je zet:"))
+    elif x_o == "ol":
+        if bord3[0] == 0:
+            if x == 1:
+                bord3[0] = 1
+            else:
+                bord3[0] = 2
+        else:
+            print("plaats al bezet")
+            return
+            #b_k_e(input("waar zet je je zet:"))
+    elif x_o == "om":
+        if bord3[1] == 0:
+            if x == 1:
+                bord3[1] = 1
+            else:
+                bord3[1] = 2
+        else:
+            print("plaats al bezet")
+            return
+            #b_k_e(input("waar zet je je zet:"))
+    elif x_o == "or":
+        if bord3[2] == 0:
+            if x == 1:
+                bord3[2] = 1
+            else:
+                bord3[2] = 2
+        else:
+            print("plaats al bezet")
+            return
+            #b_k_e(input("waar zet je je zet:"))
+    else:
+        print("de zet bestaat niet")
+        return
+        #b_k_e(input("waar zet je je zet:"))
+    #print(bord1)
+    #print(bord2)
+    #print(bord3)
+    if (bord1 == [1, 1, 1] or bord2 == [1, 1, 1] or bord3 == [1, 1, 1] or
+        (bord1[0] == 1 and bord2[0] == 1 and bord3[0] == 1) or
+        (bord1[1] == 1 and bord2[1] == 1 and bord3[1] == 1) or
+        (bord1[2] == 1 and bord2[2] == 1 and bord3[2] == 1) or
+        (bord1[0] == 1 and bord2[1] == 1 and bord3[2] == 1) or
+        (bord1[2] == 1 and bord2[1] == 1 and bord3[0] == 1)):
+        print("speler 1 heeft gewonnen")
+        beurten = 0
+        return
+    elif (bord1 == [2, 2, 2] or bord2 == [2, 2, 2] or bord3 == [2, 2, 2] or
+        (bord1[0] == 2 and bord2[0] == 2 and bord3[0] == 2) or
+        (bord1[1] == 2 and bord2[1] == 2 and bord3[1] == 2) or
+        (bord1[2] == 2 and bord2[2] == 2 and bord3[2] == 2) or
+        (bord1[0] == 2 and bord2[1] == 2 and bord3[2] == 2) or
+        (bord1[2] == 2 and bord2[1] == 2 and bord3[0] == 2)):
+        print("speler 2 heeft gewonnen")
+        beurten = 0
+        return
+    
+    x = x + 1
+    if x == 3:
+        x = 1
+    beurten -= 1
+    #b_k_e(input("waar zet je je zet:"))
+
+#b_k_e(input("waar zet je je zet:"))
+
+
+while beurten != 0:
+    print(bord1)
+    print(bord2)
+    print(bord3)
+
+    b_k_e(input(f"waar zet je je zet {x}:"))

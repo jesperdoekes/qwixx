@@ -137,49 +137,69 @@ class QwixxGame:
 		print('-' * 60)
 
 	def play_turn(self):
+		number_allowed = 0
+		check_penalties = 0
 		self.round += 1
 		w1, w2, colors = self.roll()
 		white_sum = w1 + w2
 		self.pretty_display_roll(w1, w2, colors)
-
+		
 		active_player = self.players[self.active]
-
-		# Active player may mark white sum on any color
-		resp = input(f"{active_player.name} (active): mark white sum {white_sum}? (R/Y/G/B or Enter to skip): ").strip().upper()
-		if resp in COLORS:
-			if active_player.sheet.mark(resp, white_sum):
-				print(f"{active_player.name} marked white sum {white_sum} on {resp}.")
-			else:
-				print("Cannot mark white sum there (either invalid position or violates ordering).")
-
-		# Active player may mark a colored die combined with a chosen white die (1 or 2)
-		resp = input(f"{active_player.name} (active): mark colored+white? Enter color (R/Y/G/B) or Enter to skip: ").strip().upper()
-		if resp in COLORS:
-			color = resp
-			w_choice = input(f"Which white die to use? 1 ({w1}) or 2 ({w2}) — enter 1 or 2: ").strip()
-			if w_choice == '1':
-				number = w1 + colors[color]
-			elif w_choice == '2':
-				number = w2 + colors[color]
-			else:
-				number = None
-			if number is not None:
-				if active_player.sheet.mark(color, number):
-					print(f"{active_player.name} marked {number} on {color} using white{w_choice}.")
+		while number_allowed == 0:
+			# Active playser may mark white sum on any color
+			resp = input(f"{active_player.name} (active): mark white sum {white_sum}? (R/Y/G/B or Enter to skip): ").strip().upper()
+			if resp in COLORS:
+				if active_player.sheet.mark(resp, white_sum):
+					print(f"{active_player.name} marked white sum {white_sum} on {resp}.")
+					number_allowed += 1
 				else:
-					print("Cannot mark that number on that color (already marked or violates ordering).")
+					print("Cannot mark white sum there (either invalid position or violates ordering).")
+			else:
+				number_allowed += 1  # skip
+				check_penalties += 1
+				print(check_penalties)
+			# Active player may mark a colored die combined with a chosen white die (1 or 2)
+		number_allowed = 0
+		while number_allowed == 0:	
+			resp = input(f"{active_player.name} (active): mark colored+white? Enter color (R/Y/G/B) or Enter to skip: ").strip().upper()
+			number_allowed += 1  # skip
+			check_penalties += 1
+			print(check_penalties)
+			if resp in COLORS:
+				color = resp
+				w_choice = input(f"Which white die to use? 1 ({w1}) or 2 ({w2}) — enter 1 or 2: ").strip()
+				if w_choice == '1':
+					number = w1 + colors[color]
+				elif w_choice == '2':
+					number = w2 + colors[color]
+				else:
+					number_allowed += 1  # skip
+					check_penalties += 1
+					print(check_penalties)
+					number = None
+				if number is not None:
+					if active_player.sheet.mark(color, number):
+						print(f"{active_player.name} marked {number} on {color} using white{w_choice}.")
+						number_allowed += 1
+					else:
+						print("Cannot mark that number on that color (already marked or violates ordering).")
 
 		# Non-active players may mark the white sum on their own sheets
 		for i, p in enumerate(self.players):
 			if i == self.active:
 				continue
-			resp = input(f"{p.name}: mark white sum {white_sum}? (R/Y/G/B or Enter to skip): ").strip().upper()
-			if resp in COLORS:
-				if p.sheet.mark(resp, white_sum):
-					print(f"{p.name} marked white sum {white_sum} on {resp}.")
+			number_allowed = 0
+			while number_allowed == 0:
+				# Each non-active player may mark the white sum on any color
+				resp = input(f"{p.name}: mark white sum {white_sum}? (R/Y/G/B or Enter to skip): ").strip().upper()
+				if resp in COLORS:
+					if p.sheet.mark(resp, white_sum):
+						print(f"{p.name} marked white sum {white_sum} on {resp}.")
+						number_allowed += 1
+					else:
+						print('Cannot mark white sum there (already marked or violates ordering).')
 				else:
-					print('Cannot mark white sum there (already marked or violates ordering).')
-
+					number_allowed += 1  # skip
 		# Show each player's sheet and scores neatly
 		print('\n' + '=' * 60)
 		for p in self.players:
@@ -188,11 +208,15 @@ class QwixxGame:
 			print('-' * 60)
 
 		# Ask active player if they want to take a penalty voluntarily (or when they couldn't mark)
-		pen = input(f"{active_player.name}: take a penalty? (y/N): ").strip().lower()
-		if pen == 'y':
+		print(check_penalties)
+	#	pen = input(f"{active_player.name}: take a penalty? (y/N): ").strip().lower()
+	#	if pen == 'y':
+		if check_penalties == 2:
 			active_player.add_penalty()
 			print(f"{active_player.name} received a penalty. Total penalties: {active_player.penalties}")
-
+		else:
+			print(f"{active_player.name} did not take a penalty.")
+			check_penalties = 0
 		# Advance to next player
 		self.active = (self.active + 1) % len(self.players)
 
