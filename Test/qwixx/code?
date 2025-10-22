@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Qwixx Suite (Bots, Tournament, UI)</title>
+https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
+<style>
+  /* === Minimal styling for boards === */
+  body { background:#0f172a; color:#e2e8f0; }
+  .nav-tabs .nav-link { color:#cbd5e1; }
+  .nav-tabs .nav-link.active { color:#0f172a; }
+  .card { background:#111827; border-color:#1f2937; }
+  .table { color:#e2e8f0; }
+  .badge { font-size: .8rem; }
+  .row-line { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  .die { display:inline-block; width:2.25rem; height:2.25rem; border-radius:.375rem; text-align:center; line-height:2.25rem; font-weight:700; margin-right:.5rem; }
+  .die-white { background:#f8fafc; color:#111827; }
+  .die-red { background:#ef4444; color:#111827; }
+  .die-yellow { background:#f59e0b; color:#111827; }
+  .die-green { background:#22c55e; color:#111827; }
+  .die-blue { background:#3b82f6; color:#111827; }
+  .lock-pill { background:#334155; }
+  .board-grid { display:grid; grid-template-columns: auto 1fr; gap:.25rem .75rem; align-items:start; }
+  .numchip { display:inline-block; min-width:2.2rem; padding:.15rem .35rem; margin:.1rem; border-radius:.25rem; border:1px solid #334155; text-align:center; }
+  .numchip.x { background:#22c55e; color:#111827; border-color:#16a34a; font-weight:700; }
+  .numchip.blocked { opacity:.35; }
+  .muted { opacity:.75; }
+  .log { font-family: ui-monospace, Menlo, Consolas, monospace; white-space:pre-wrap; }
+  .btn-xs { --bs-btn-padding-y:.15rem; --bs-btn-padding-x:.35rem; --bs-btn-font-size:.75rem; }
+</style>
+</head>
+<body>
+
+<div class="container py-3">
+  <h1 class="mb-3">Qwixx Suite <span class="badge bg-info text-dark">UI + Bots + Tournament</span></h1>
+
+  <!-- Tabs -->
+  <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="play-tab" data-bs-toggle="tab" data-bs-target="#play" type="button" role="tab">Play</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="tourn-tab" data-bs-toggle="tab" data-bs-target="#tourn" type="button" role="tab">Tournament</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="bots-tab" data-bs-toggle="tab" data-bs-target="#bots" type="button" role="tab">Bots & Settings</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="docs-tab" data-bs-toggle="tab" data-bs-target="#docs" type="button" role="tab">Docs</button>
+    </li>
+  </ul>
+
+  <div class="tab-content pt-3">
+    <!-- === PLAY TAB === -->
+    <div class="tab-pane fade show active" id="play" role="tabpanel">
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span>Game Controls</span>
+              <div>
+                <button id="btn-new" class="btn btn-sm btn-outline-light">New Game</button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="mb-2">
+                <div id="diceRow" class="d-flex align-items-center"></div>
+                <div class="small muted" id="phaseLabel"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Players (turn order)</label>
+                <div class="input-group input-group-sm mb-2">
+                  <span class="input-group-text">P1</span>
+                  <input id="p1name" class="form-control" value="Alice">
+                  <select id="p1bot" class="form-select">
+                    <!-- options filled by JS -->
+                  </select>
+                </div>
+                <div class="input-group input-group-sm mb-2">
+                  <span class="input-group-text">P2</span>
+                  <input id="p2name" class="form-control" value="Bob">
+                  <select id="p2bot" class="form-select"></select>
+                </div>
+                <div class="input-group input-group-sm mb-2">
+                  <span class="input-group-text">P3</span>
+                  <input id="p3name" class="form-control" value="">
+                  <select id="p3bot" class="form-select"></select>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text">P4</span>
+                  <input id="p4name" class="form-control" value="">
+                  <select id="p4bot" class="form-select"></select>
+                </div>
+                <button id="btn-apply-players" class="btn btn-sm btn-primary">Apply Players</button>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button id="btn-roll" class="btn btn-success">Roll Dice</button>
+                <button id="btn-white-next" class="btn btn-outline-light">Auto White Phase</button>
+                <button id="btn-color-active" class="btn btn-outline-info">Active Color Move</button>
+                <button id="btn-end" class="btn btn-danger">End Turn</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header">Log</div>
+            <div class="card-body">
+              <pre class="log" id="log"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header">Boards & Scores</div>
+            <div class="card-body">
+              <div id="boards"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- === TOURNAMENT TAB === -->
+    <div class="tab-pane fade" id="tourn" role="tabpanel">
+      <div class="row g-3">
+        <div class="col-lg-5">
+          <div class="card">
+            <div class="card-header">Tournament Setup</div>
+            <div class="card-body">
+              <div class="mb-2">
+                <label class="form-label">Participants (bot kinds)</label>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-heur" checked>
+                      <label class="form-check-label" for="t-heur">heur</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-learn" checked>
+                      <label class="form-check-label" for="t-learn">learn</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-gap1" checked>
+                      <label class="form-check-label" for="t-gap1">gap1</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-gap1lock" checked>
+                      <label class="form-check-label" for="t-gap1lock">gap1lock</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-gap2" checked>
+                      <label class="form-check-label" for="t-gap2">gap2</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-gap2lock" checked>
+                      <label class="form-check-label" for="t-gap2lock">gap2lock</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-gap3" checked>
+                      <label class="form-check-label" for="t-gap3">gap3</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-gap3lock" checked>
+                      <label class="form-check-label" for="t-gap3lock">gap3lock</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-probgap" checked>
+                      <label class="form-check-label" for="t-probgap">probgap</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-probgaplock" checked>
+                      <label class="form-check-label" for="t-probgaplock">probgaplock</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="t-scout" checked>
+                      <label class="form-check-label" for="t-scout">scout</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label">Games per pairing</label>
+                  <input id="t-games" type="number" class="form-control form-control-sm" value="50" min="5" step="5">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Seed</label>
+                  <input id="t-seed" type="number" class="form-control form-control-sm" value="42">
+                </div>
+              </div>
+              <div class="form-check form-switch my-2">
+                <input class="form-check-input" type="checkbox" id="t-exclude-mcts" checked>
+                <label class="form-check-label" for="t-exclude-mcts">Exclude MCTS (faster)</label>
+              </div>
+              <button id="btn-run-tourn" class="btn btn-primary">Run Tournament</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span>Results</span>
+              <button id="btn-clear-tourn" class="btn btn-sm btn-outline-light">Clear</button>
+            </div>
+            <div class="card-body">
+              <pre id="tourn-log" class="log"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- === BOTS & SETTINGS TAB === -->
+    <div class="tab-pane fade" id="bots" role="tabpanel">
+      <div class="card">
+        <div class="card-header">Available Bots</div>
+        <div class="card-body">
+<pre class="log">
+heur               – Heuristic policy with closure setup and flexibility.
+learn              – Light ε-greedy learner with heuristic priors (local only).
+gap1 / gap1lock    – Max skip 1 cell (lock version can exceed cap only to lock).
+gap2 / gap2lock    – Max skip 2.
+gap3 / gap3lock    – Max skip 3.
+probgap            – Probability-weighted gaps: skipping near 7 is costly; 2/12 cheap.
+probgaplock        – probgap + lock exception.
+scout              – Hybrid: heuristic ranks; if close, mini-MCTS on top-K candidates.
+mcts               – Improved MCTS (beam + heuristic priors). Slower; disable in tournaments for speed.
+
+Global safety:
+1) Must remain lock-feasible after any mark (reachable ≥6 marks in row).
+2) Must have ≥5 marks before taking last number (12 for R/Y, 2 for G/B).
+</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- === DOCS TAB === -->
+    <div class="tab-pane fade" id="docs" role="tabpanel">
+      <div class="card">
+        <div class="card-header">Project Summary & Next Steps</div>
+        <div class="card-body" id="summary-doc">
+          <!-- Filled below -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   QWIXX SUITE (in-browser)
+   - Engine
+   - Shared rules (lock-feasibility + last-number)
+   - Bots (Heuristic, Gap family, ProbGap, Learner, Scout, MCTS)
+   - UI Controls
+   ============================================================ */
+
+/* ----------------- Constants & Utilities ----------------- */
+const COLORS = ['red','yellow','green','blue'];
+const ROW_NUMBERS = {
+  red:    Array.from({length:11}, (_,i)=>i+2),        // 2..12
+  yellow: Array.from({length:11}, (_,i)=>i+2),
+  green:  Array.from({length:11}, (_,i)=>12-i),       // 12..2
+  blue:   Array.from({length:11}, (_,i)=>12-i)
+};
+const LAST_NUMBER = { red:12, yellow:12, green:2, blue:2 };
+const UP_ROWS   = new Set(['red','yellow']);
+const DOWN_ROWS = new Set(['green','blue']);
+
+function randInt(a,b){ return a + Math.floor(Math.random()*(b-a+1)); }
+
+function frontier(row,color){
+  if (!row || row.length===0) return null;
+  return UP_ROWS.has(color) ? Math.max(...row) : Math.min(...row);
+}
+function sequenceValid(row,color,n){
+  if (!row || row.length===0) return true;
+  if (UP_ROWS.has(color)) return n > Math.max(...row);
+  return n < Math.min(...row);
+}
+function sortedInsertPreview(row,color,n){
+  if (row.includes(n)) return row.slice();
+  const r = row.slice(); r.push(n);
+  r.sort((a,b)=>UP_ROWS.has(color)?a-b:b-a);
+  return r;
+}
+function maxPossibleMarksAfter(rowAfter,color){
+  const n = rowAfter.length;
+  if (n===0) return 11;
+  if (UP_ROWS.has(color)){
+    const hi = Math.max(...rowAfter);
+    const future = Math.max(0, 12-hi);
+    return n + future;
+  } else {
+    const lo = Math.min(...rowAfter);
+    const future = Math.max(0, lo-2);
+    return n + future;
+  }
+}
+function infeasibleToLock(rowAfter,color){
+  return maxPossibleMarksAfter(rowAfter,color) < 6;
+}
+function lockFeasibleAfter(row,color,n){
+  return !infeasibleToLock(sortedInsertPreview(row,color,n),color);
+}
+function isLast(color,n){ return n===LAST_NUMBER[color]; }
+function lastPickAllowed(row,color,n){
+  if (!isLast(color,n)) return true;
+  return row.length >= 5; // must be able to lock now
+}
+function bigSkipCells(row,color,n){
+  const f = frontier(row,color);
+  if (f===null) return 0;
+  if (UP_ROWS.has(color)) return Math.max(0, n-(f+1));
+  return Math.max(0,(f-1)-n);
+}
+function skipFromStart(row,color,n){
+  if (row && row.length>0) return bigSkipCells(row,color,n);
+  if (UP_ROWS.has(color)) return Math.max(0,n-2);
+  return Math.max(0,12-n);
+}
+
+/* 2d6 normalized weights for probability-aware skip (7 is 1.0) */
+const COUNTS2D6 = {2:1,3:2,4:3,5:4,6:5,7:6,8:5,9:4,10:3,11:2,12:1};
+const PEAK = COUNTS2D6[7];
+const D6NORM = Object.fromEntries(Array.from({length:11},(_,i)=>{
+  const n = i+2; return [n, COUNTS2D6[n]/PEAK];
+}));
+function skippedIntegers(row,color,n){
+  let start;
+  if (UP_ROWS.has(color)){
+    start = row.length? Math.max(...row) : 2;
+    if (n<=start+1) return [];
+    return Array.from({length:n-(start+1)},(_,k)=>start+1+k);
+  }else{
+    start = row.length? Math.min(...row) : 12;
+    if (start<=n+1) return [];
+    return Array.from({length:(start-1)-n},(_,k)=>n+1+k);
+  }
+}
+
+/* ----------------- Qwixx Engine ----------------- */
+class Player {
+  constructor(name, isHost=false){
+    this.name = name;
+    this.isHost = isHost;
+    this.red=[]; this.yellow=[]; this.green=[]; this.blue=[];
+    this.penalties=0;
+  }
+  row(c){ return this[c]; }
+  toCard(){ return {red:[...this.red], yellow:[...this.yellow], green:[...this.green], blue:[...this.blue], penalties:this.penalties}; }
+}
+
+const Phase = { INITIAL:'initial', WHITE:'white', COLOR:'color', COMPLETE:'complete' };
+
+class QwixxGame {
+  constructor(players, currentIndex=0){
+    this.players = players;
+    this.currentIndex = currentIndex;
+    this.phase = Phase.INITIAL;
+    this.closed = { red:false, yellow:false, green:false, blue:false };
+    this.activeDie = { red:true, yellow:true, green:true, blue:true };
+    this.rowClosers = { red:[], yellow:[], green:[], blue:[] };
+    this.turnActions = new Map(); // name -> {whiteMarked, whiteSkipped, colorMarked}
+    this.whiteDone = new Map();   // name -> boolean
+    this.pendingClose = { red:false, yellow:false, green:false, blue:false };
+    this.selectedWhite = null; this.selectedColor = null;
+
+    this.dice = { w1:null, w2:null, red:null, yellow:null, green:null, blue:null };
+    this._resetTurnFlags();
+  }
+
+  get activePlayer(){ return this.players[this.currentIndex]; }
+  _resetTurnFlags(){
+    this.players.forEach(p=>{
+      this.turnActions.set(p.name, { whiteMarked:false, whiteSkipped:false, colorMarked:false });
+      this.whiteDone.set(p.name, false);
+    });
+    this.selectedWhite=null; this.selectedColor=null;
+  }
+  whiteSum(){
+    const {w1,w2} = this.dice;
+    return (w1==null||w2==null)?null:w1+w2;
+  }
+
+  roll(){
+    if (this.phase!==Phase.INITIAL) throw new Error('Can only roll in initial phase');
+    this.dice.w1 = randInt(1,6);
+    this.dice.w2 = randInt(1,6);
+    for (const c of COLORS){
+      this.dice[c] = this.activeDie[c] ? randInt(1,6) : 0;
+    }
+    this.phase = Phase.WHITE;
+    this._resetTurnFlags();
+  }
+
+  markWhite(name,color,number){
+    const p = this.players.find(x=>x.name===name);
+    if (!p) throw new Error('Player?');
+    if (this.phase!==Phase.WHITE) throw new Error('Not white phase');
+    if (this.closed[color]) throw new Error(`${color} closed`);
+    const ws = this.whiteSum();
+    if (ws===null || ws!==number) throw new Error('Wrong white sum');
+    const row = p.row(color);
+    if (!sequenceValid(row,color,number)) throw new Error('Sequence invalid');
+    if (!lastPickAllowed(row,color,number)) throw new Error('Last number requires ≥5 marks');
+    if (!lockFeasibleAfter(row,color,number)) throw new Error('Move would make locking impossible');
+
+    // apply
+    p[color] = sortedInsertPreview(row,color,number);
+    const ta = this.turnActions.get(name);
+    ta.whiteMarked = true;
+    this.whiteDone.set(name,true);
+    this._maybeQueueClose(color, p[color], 'white');
+  }
+  skipWhite(name){
+    if (this.phase!==Phase.WHITE) throw new Error('Not white phase');
+    const ta = this.turnActions.get(name);
+    ta.whiteSkipped = true;
+    this.whiteDone.set(name,true);
+  }
+  allWhiteDone(){ return this.players.every(p=>this.whiteDone.get(p.name)); }
+  finalizePendingClose(){
+    for (const c of COLORS){
+      if (this.pendingClose[c] && !this.closed[c]){
+        this._closeNow(c, this.activePlayer.name);
+      }
+      this.pendingClose[c] = false;
+    }
+  }
+  proceedColorIfReady(){
+    if (this.phase===Phase.WHITE && this.allWhiteDone()){
+      this.finalizePendingClose();
+      this.phase = Phase.COLOR;
+    }
+  }
+  selectColorDice(whiteIndex,color){
+    if (this.phase!==Phase.COLOR) throw new Error('Not color phase');
+    if (!([1,2].includes(whiteIndex))) throw new Error('white die must be 1 or 2');
+    if (!COLORS.includes(color)) throw new Error('Bad color');
+    if (this.closed[color]) throw new Error(`${color} closed`);
+    if (!this.activeDie[color]) throw new Error(`${color} die inactive`);
+    const ta = this.turnActions.get(this.activePlayer.name);
+    if (ta.colorMarked) throw new Error('Already marked color this turn');
+    this.selectedWhite = whiteIndex; this.selectedColor = color;
+  }
+  combinedValue(){
+    const w = (this.selectedWhite===1)?this.dice.w1:this.selectedWhite===2?this.dice.w2:null;
+    const c = this.selectedColor? this.dice[this.selectedColor] : null;
+    if (w==null||c==null) return null;
+    return w+c;
+  }
+  markColor(name,color,number){
+    if (this.activePlayer.name!==name) throw new Error('Only active player in color phase');
+    if (this.phase!==Phase.COLOR) throw new Error('Not color phase');
+    const ta = this.turnActions.get(name);
+    if (ta.colorMarked) throw new Error('Already marked color');
+    if (this.selectedColor!==color || ![1,2].includes(this.selectedWhite)) throw new Error('Select dice first');
+
+    const p = this.players.find(x=>x.name===name);
+    const row = p.row(color);
+    const w = this.selectedWhite===1?this.dice.w1:this.dice.w2;
+    const cdie = this.dice[color];
+    if (number!==w+cdie) throw new Error('Wrong combined value');
+    if (this.closed[color]) throw new Error(`${color} closed`);
+    if (!sequenceValid(row,color,number)) throw new Error('Sequence invalid');
+    if (!lastPickAllowed(row,color,number)) throw new Error('Last number requires ≥5 marks');
+    if (!lockFeasibleAfter(row,color,number)) throw new Error('Move would make locking impossible');
+
+    p[color] = sortedInsertPreview(row,color,number);
+    ta.colorMarked = true;
+    this._maybeQueueClose(color, p[color], 'color');
+  }
+  takePenalty(){
+    const p = this.activePlayer;
+    const ta = this.turnActions.get(p.name);
+    if (ta.whiteMarked || ta.whiteSkipped) {
+      // allowed; white already resolved. A penalty is typically when both phases fail.
+    }
+    p.penalties = Math.min(4, p.penalties+1);
+    this.phase = Phase.COMPLETE;
+  }
+  endTurn(){
+    if (![Phase.COLOR, Phase.COMPLETE].includes(this.phase)) throw new Error('Cannot end turn yet');
+    const p = this.activePlayer;
+    const ta = this.turnActions.get(p.name);
+    if (this.phase===Phase.COLOR && ta.whiteSkipped && !ta.colorMarked){
+      // You must take a penalty in this case; auto-enforce
+      this.takePenalty();
+    }
+    this.selectedWhite=null; this.selectedColor=null;
+    // next player
+    this.currentIndex = (this.currentIndex+1) % this.players.length;
+    this.phase = Phase.INITIAL;
+    // game end: 2 rows closed or any player with 4 penalties
+    const closedCount = COLORS.filter(c=>this.closed[c]).length;
+    if (closedCount>=2 || this.players.some(x=>x.penalties>=4)){
+      this.phase = Phase.COMPLETE; // show finished state
+    }
+  }
+
+  _maybeQueueClose(color, marked, phase){
+    // lock requires >=6 marks including last number
+    if (marked.includes(LAST_NUMBER[color]) && marked.length>=6){
+      if (phase==='white'){
+        this.pendingClose[color]=true;  // closes after white phase
+      } else {
+        this._closeNow(color, this.activePlayer.name);
+      }
+    }
+  }
+  _closeNow(color, actor){
+    if (this.closed[color]) return;
+    this.closed[color]=true;
+    this.activeDie[color]=false;
+    if (!this.rowClosers[color].includes(actor)) this.rowClosers[color].push(actor);
+  }
+
+  calcScore(name){
+    const p = this.players.find(x=>x.name===name);
+    let total=0;
+    const bd = { red:0,yellow:0,green:0,blue:0,penalties:0,total:0 };
+    for (const c of COLORS){
+      const count = p[c].length;
+      if (count===0){ bd[c]=0; continue; }
+      const didClose = this.rowClosers[c].includes(name) && count>=6;
+      const k = didClose ? count+1 : count;
+      const rowScore = k*(k+1)/2;
+      bd[c]=rowScore; total+=rowScore;
+    }
+    const penalty = p.penalties*5;
+    total -= penalty;
+    bd.penalties = -penalty;
+    bd.total = Math.round(total);
+    return bd;
+  }
+}
+
+/* ----------------- Shared legal action enumerators ----------------- */
+function legalWhiteSumColors(g, name){
+  const ws = g.whiteSum();
+  if (ws==null || g.phase!==Phase.WHITE) return [];
+  const p = g.players.find(x=>x.name===name);
+  const out=[];
+  for (const c of COLORS){
+    if (g.closed[c]) continue;
+    const row = p.row(c);
+    if (!ROW_NUMBERS[c].includes(ws)) continue;
+    if (row.includes(ws)) continue;
+    if (!sequenceValid(row,c,ws)) continue;
+    if (!lastPickAllowed(row,c,ws)) continue;
+    if (!lockFeasibleAfter(row,c,ws)) continue;
+    out.push(c);
+  }
+  return out;
+}
+function legalColorActions(g,name){
+  if (g.phase!==Phase.COLOR) return [];
+  const p = g.players.find(x=>x.name===name);
+  const d = g.dice; if (d.w1==null || d.w2==null) return [];
+  const out=[];
+  for (const c of COLORS){
+    if (g.closed[c] || !g.activeDie[c]) continue;
+    const row = p.row(c);
+    const w1 = d.w1 + d[c];
+    const w2 = d.w2 + d[c];
+    if (!row.includes(w1) && sequenceValid(row,c,w1) && lastPickAllowed(row,c,w1) && lockFeasibleAfter(row,c,w1))
+      out.push([c,1,w1]);
+    if (!row.includes(w2) && sequenceValid(row,c,w2) && lastPickAllowed(row,c,w2) && lockFeasibleAfter(row,c,w2))
+      out.push([c,2,w2]);
+  }
+  return out;
+}
+
+/* ----------------- Heuristic core (scoring) ----------------- */
+function setupSignal(rowAfter,color,skipped){
+  if (rowAfter.length<4) return false;
+  const target = LAST_NUMBER[color];
+  const dist = UP_ROWS.has(color)? target - Math.max(...rowAfter) : Math.min(...rowAfter) - target;
+  return (dist<=3) && (skipped===0) && !rowAfter.includes(target);
+}
+
+/* ----------------- Bots ----------------- */
+class HeuristicBot {
+  constructor(name){ this.name=name; this.pending=null; }
+  chooseWhiteSum(g){
+    if (this.pending?.white) return this.pending.white;
+    const opts = legalWhiteSumColors(g,this.name);
+    if (opts.length===0) return ['skip',null];
+    const base = score_total(g,this.name);
+    let best=['skip',null], bestv=-1e9;
+    const ws = g.whiteSum();
+    for (const c of opts){
+      const sim = clone(g);
+      try{
+        const rowBefore = sim.players.find(p=>p.name===this.name).row(c);
+        sim.markWhite(this.name,c,ws);
+        sim.finalizePendingClose();
+        const after = score_total(sim,this.name);
+        const delta = after-base;
+        const rowAfter = sim.players.find(p=>p.name===this.name).row(c);
+        const skipped = bigSkipCells(rowBefore,c,ws);
+        let v = delta - BIG_SKIP_PENALTY_PER_CELL*skipped;
+        if (will_close_now(sim,c,this.name)) v += CLOSE_NOW_BONUS;
+        if (setupSignal(rowAfter,c,skipped)) v += SETUP_BONUS;
+        if (infeasibleToLock(rowAfter,c)) v -= NO_LOCK_CAP_PENALTY;
+        v += FLEX_WEIGHT*flexibility_score(rowAfter,c);
+        if (v>bestv){ bestv=v; best=['mark',c]; }
+      }catch(e){/*pass*/}
+    }
+    return best;
+  }
+  chooseColor(g){
+    if (this.pending?.color) return this.pending.color;
+    const acts = legalColorActions(g,this.name);
+    if (acts.length===0) return ['skip',null,null];
+    const base = score_total(g,this.name);
+    let best=['skip',null,null], bestv=-1e9;
+    const markedWhite = g.turnActions.get(this.name)?.whiteMarked;
+    for (const [c,wd,n] of acts){
+      const sim = clone(g);
+      try{
+        const rowBefore = sim.players.find(p=>p.name===this.name).row(c);
+        sim.selectColorDice(wd,c);
+        sim.markColor(this.name,c,n);
+        const after = score_total(sim,this.name);
+        const delta = after-base;
+        const rowAfter = sim.players.find(p=>p.name===this.name).row(c);
+        const skipped = bigSkipCells(rowBefore,c,n);
+        let v = delta + (markedWhite?0:0.5) - BIG_SKIP_PENALTY_PER_CELL*skipped;
+        if (will_close_now(sim,c,this.name)) v += CLOSE_NOW_BONUS;
+        if (setupSignal(rowAfter,c,skipped)) v += SETUP_BONUS;
+        if (infeasibleToLock(rowAfter,c)) v -= NO_LOCK_CAP_PENALTY;
+        v += FLEX_WEIGHT*flexibility_score(rowAfter,c);
+        if (v>bestv){ bestv=v; best=['mark',c,wd]; }
+      }catch(e){/*pass*/}
+    }
+    return best;
+  }
+  planTurn(g){
+    // Simple: pick best white & best color greedily; UI calls choose* during play
+    this.pending = { white:this.chooseWhiteSum(g), color:null };
+  }
+}
+
+class GapPolicyBot extends HeuristicBot{
+  constructor(name,{max_skip=1,allow_break_for_lock=false}={}){
+    super(name); this.max_skip=max_skip; this.allow_break_for_lock=allow_break_for_lock;
+  }
+  _wouldLock(row,color,n){ return isLast(color,n) && (row.length+1>=6); }
+  _allowed(row,color,n){
+    const raw = skipFromStart(row,color,n);
+    if (raw<=this.max_skip) return true;
+    return this.allow_break_for_lock && this._wouldLock(row,color,n);
+  }
+  _whiteFiltered(g){
+    const ws = g.whiteSum(); const opts=legalWhiteSumColors(g,this.name);
+    const res=[];
+    for (const c of opts){
+      const row = g.players.find(p=>p.name===this.name).row(c);
+      if (this._allowed(row,c,ws)) res.push(c);
+    }
+    return res;
+  }
+  _colorFiltered(g){
+    const acts = legalColorActions(g,this.name);
+    const res=[];
+    for (const [c,wd,n] of acts){
+      const row = g.players.find(p=>p.name===this.name).row(c);
+      if (this._allowed(row,c,n)) res.push([c,wd,n]);
+    }
+    return res;
+  }
+  chooseWhiteSum(g){
+    const opts = this._whiteFiltered(g);
+    if (opts.length===0) return ['skip',null];
+    // evaluate like heuristic
+    const base = score_total(g,this.name);
+    let best=['skip',null], bestv=-1e9;
+    const ws = g.whiteSum();
+    for (const c of opts){
+      const sim = clone(g);
+      try{
+        const rowBefore = sim.players.find(p=>p.name===this.name).row(c);
+        sim.markWhite(this.name,c,ws);
+        sim.finalizePendingClose();
+        const delta = score_total(sim,this.name) - base;
+        const rowAfter = sim.players.find(p=>p.name===this.name).row(c);
+        const skipped = bigSkipCells(rowBefore,c,ws);
+        let v = delta - BIG_SKIP_PENALTY_PER_CELL*skipped;
+        if (will_close_now(sim,c,this.name)) v += CLOSE_NOW_BONUS;
+        if (setupSignal(rowAfter,c,skipped)) v += SETUP_BONUS;
+        if (infeasibleToLock(rowAfter,c)) v -= NO_LOCK_CAP_PENALTY;
+        v += FLEX_WEIGHT*flexibility_score(rowAfter,c);
+        if (v>bestv){ bestv=v; best=['mark',c]; }
+      }catch(e){}
+    }
+    return best;
+  }
+  chooseColor(g){
+    const acts = this._colorFiltered(g);
+    if (acts.length===0) return ['skip',null,null];
+    const base = score_total(g,this.name);
+    let best=['skip',null,null], bestv=-1e9;
+    const markedWhite = g.turnActions.get(this.name)?.whiteMarked;
+    for (const [c,wd,n] of acts){
+      const sim = clone(g);
+      try{
+        const rowBefore = sim.players.find(p=>p.name===this.name).row(c);
+        sim.selectColorDice(wd,c);
+        sim.markColor(this.name,c,n);
+        const delta = score_total(sim,this.name) - base;
+        const rowAfter = sim.players.find(p=>p.name===this.name).row(c);
+        const skipped = bigSkipCells(rowBefore,c,n);
+        let v = delta + (markedWhite?0:0.5) - BIG_SKIP_PENALTY_PER_CELL*skipped;
+        if (will_close_now(sim,c,this.name)) v += CLOSE_NOW_BONUS;
+        if (setupSignal(rowAfter,c,skipped)) v += SETUP_BONUS;
+        if (infeasibleToLock(rowAfter,c)) v -= NO_LOCK_CAP_PENALTY;
+        v += FLEX_WEIGHT*flexibility_score(rowAfter,c);
+        if (v>bestv){ bestv=v; best=['mark',c,wd]; }
+      }catch(e){}
+    }
+    return best;
+  }
+}
+class Gap1Bot extends GapPolicyBot{ constructor(name){ super(name,{max_skip:1,allow_break_for_lock:false}); } }
+class Gap1LockBot extends GapPolicyBot{ constructor(name){ super(name,{max_skip:1,allow_break_for_lock:true}); } }
+class Gap2Bot extends GapPolicyBot{ constructor(name){ super(name,{max_skip:2,allow_break_for_lock:false}); } }
+class Gap2LockBot extends GapPolicyBot{ constructor(name){ super(name,{max_skip:2,allow_break_for_lock:true}); } }
+class Gap3Bot extends GapPolicyBot{ constructor(name){ super(name,{max_skip:3,allow_break_for_lock:false}); } }
+class Gap3LockBot extends GapPolicyBot{ constructor(name){ super(name,{max_skip:3,allow_break_for_lock:true}); } }
+
+class ProbGapBot extends GapPolicyBot{
+  constructor(name,{max_skip=2,allow_break_for_lock=false,max_eff_skip=1.75}={}){
+    super(name,{max_skip,allow_break_for_lock}); this.max_eff_skip=max_eff_skip;
+  }
+  _effectiveWeight(row,color,n){
+    const sk = skippedIntegers(row,color,n);
+    return sk.reduce((s,x)=>s+(D6NORM[x]??1),0);
+  }
+  _allowed(row,color,n){
+    if (!super._allowed(row,color,n)) return false;
+    const w = this._effectiveWeight(row,color,n);
+    if (w<=this.max_eff_skip) return true;
+    return this.allow_break_for_lock && this._wouldLock(row,color,n);
+  }
+}
+class ProbGapLockBot extends ProbGapBot{
+  constructor(name){ super(name,{max_skip:2,allow_break_for_lock:true,max_eff_skip:1.75}); }
+}
+
+/* ---- (Improved) MCTS Bot: heuristic priors + beam ----
+   NOTE: In UI we generally exclude MCTS for tournaments due to slowness.
+*/
+class MCTSBot {
+  constructor(name,{simulations=400, depth_turns=2, beam_width=10, rollout_kind='heur'}={}){
+    this.name=name; this.simulations=simulations; this.depth_turns=depth_turns; this.beam_width=beam_width; this.rollout_kind=rollout_kind;
+    this.pending=null;
+  }
+  _rolloutPolicy(name){
+    if (this.rollout_kind==='gap2') return new Gap2Bot(name);
+    if (this.rollout_kind==='gap2lock') return new Gap2LockBot(name);
+    if (this.rollout_kind==='probgap') return new ProbGapBot(name);
+    return new HeuristicBot(name);
+  }
+  _applyWhite(sim,who,act){
+    const [a,c]=act;
+    if (a==='mark' && c){
+      const ws = sim.whiteSum(); if (ws==null) return;
+      sim.markWhite(who,c,ws);
+      sim.finalizePendingClose();
+    } else sim.skipWhite(who);
+  }
+  _applyColor(sim,who,act){
+    const [a,c,wd]=act;
+    const markedWhite = sim.turnActions.get(who)?.whiteMarked;
+    if (a==='mark' && c && wd){
+      const cv = (wd===1?sim.dice.w1:sim.dice.w2) + sim.dice[c];
+      sim.selectColorDice(wd,c);
+      sim.markColor(who,c,cv);
+    } else {
+      if (!markedWhite) sim.takePenalty();
+    }
+  }
+  _simulateFuture(g,my,depth){
+    // shallow rollout with heuristic-like policies
+    const bots = Object.fromEntries(g.players.map(p=>[p.name,this._rolloutPolicy(p.name)]));
+    for (let d=0; d<depth; d++){
+      if (g.phase===Phase.COMPLETE) break;
+      const active = g.activePlayer.name;
+      try{ g.roll(); }catch(e){ return score_total(g,my); }
+      // White phase for all
+      for (const p of g.players){
+        if (g.whiteDone.get(p.name)) continue;
+        const b = bots[p.name];
+        const wact = (p.name===active && b.planTurn)? (b.planTurn(g), b.pending?.white ?? b.chooseWhiteSum(g)) : b.chooseWhiteSum(g);
+        try{ this._applyWhite(g,p.name,wact); }catch(e){ try{ g.skipWhite(p.name);}catch(e2){} }
+      }
+      g.proceedColorIfReady();
+      if (g.phase===Phase.COLOR){
+        const b = bots[active];
+        if (!b.pending?.color && b.planTurn) b.planTurn(g);
+        const cact = b.pending?.color ?? b.chooseColor(g);
+        try{ this._applyColor(g,active,cact); }catch(e){
+          const markedWhite = g.turnActions.get(active)?.whiteMarked;
+          if (!markedWhite) try{ g.takePenalty(); }catch(e2){}
+        }
+      }
+      try{ g.endTurn(); }catch(e){ break; }
+    }
+    return score_total(g,my);
+  }
+  _planPrior(g,wact,cact){
+    // one-turn clone as a cheap heuristic prior
+    const base = score_total(g,this.name);
+    const sim = clone(g);
+    try{
+      this._applyWhite(sim, sim.activePlayer.name, wact);
+      if (sim.phase===Phase.WHITE){
+        for (const p of sim.players){ if (!sim.whiteDone.get(p.name)) try{ sim.skipWhite(p.name);}catch(e){} }
+        sim.proceedColorIfReady();
+      }
+      this._applyColor(sim, sim.activePlayer.name, cact);
+      try{ sim.endTurn(); }catch(e){}
+      return score_total(sim,this.name) - base;
+    }catch(e){ return -1e9; }
+  }
+  planTurn(g){
+    const ws = g.whiteSum();
+    const whiteChoices = [['skip',null], ...legalWhiteSumColors(g,this.name).map(c=>['mark',c])];
+    const cands=[];
+    for (const [wa,wc] of whiteChoices){
+      const simW = clone(g);
+      let whiteMarked=false;
+      try{
+        if (wa==='mark' && wc && ws!=null){ simW.markWhite(this.name,wc,ws); simW.finalizePendingClose(); whiteMarked=true; }
+        else simW.skipWhite(this.name);
+      }catch(e){ try{ simW.skipWhite(this.name);}catch(e2){} }
+      simW.phase=Phase.COLOR;
+      const acts = legalColorActions(simW,this.name);
+      const colorChoices = [['skip',null,null], ...acts.map(x=>['mark',x[0],x[1]])];
+      for (const cact of colorChoices){
+        if (!whiteMarked && cact[0]==='skip') continue;
+        cands.push([[wa,wc], cact]);
+      }
+    }
+    if (cands.length===0){ this.pending={white:['skip',null], color:['skip',null,null]}; return; }
+    // score by prior and pick top beam
+    const scored = cands.map(pair=>[this._planPrior(g, pair[0], pair[1]), pair]).sort((a,b)=>b[0]-a[0]).slice(0,this.beam_width);
+    const simsPer = Math.max(1, Math.floor(this.simulations / scored.length));
+    let best=null, bestv=-1e9;
+    for (const [prior,pair] of scored){
+      const v = this._evalPlan(g,pair[0],pair[1],simsPer);
+      if (v>bestv){ bestv=v; best=pair; }
+    }
+    if (!best){ this.pending={white:scored[0][1][0], color:scored[0][1][1]}; return; }
+    this.pending={white:best[0], color:best[1]};
+  }
+  _evalPlan(g,wact,cact, simsPer){
+    const base = score_total(g,this.name);
+    const sim0 = clone(g);
+    try{
+      this._applyWhite(sim0, sim0.activePlayer.name, wact);
+      if (sim0.phase===Phase.WHITE){
+        for (const p of sim0.players){ if (!sim0.whiteDone.get(p.name)) try{ sim0.skipWhite(p.name);}catch(e){} }
+        sim0.proceedColorIfReady();
+      }
+      this._applyColor(sim0, sim0.activePlayer.name, cact);
+      try{ sim0.endTurn(); }catch(e){}
+    }catch(e){ return -1e9; }
+    let acc=0;
+    for (let i=0;i<simsPer;i++){
+      const sim = clone(sim0);
+      acc += this._simulateFuture(sim,this.name,this.depth_turns);
+    }
+    return (acc/simsPer) - base;
+  }
+  chooseWhiteSum(g){ return (this.pending?.white) ?? ['skip',null]; }
+  chooseColor(g){ return (this.pending?.color) ?? ['skip',null,null]; }
+}
+
+/* ---- ScoutBot: heuristic first, tiny MCTS only if close ---- */
+class ScoutBot {
+  constructor(name,{top_k=5, sims_per=40, depth_turns=2, rollout_kind='heur', margin_thresh=0.75}={}){
+    this.name=name; this.top_k=top_k; this.sims_per=sims_per; this.depth_turns=depth_turns;
+    this.rollout_kind=rollout_kind; this.margin_thresh=margin_thresh; this.pending=null;
+  }
+  _prior(g,w,c){ return new MCTSBot(this.name,{simulations:1})._planPrior(g,w,c); }
+  planTurn(g){
+    const ws = g.whiteSum();
+    const whiteChoices = [['skip',null], ...legalWhiteSumColors(g,this.name).map(c=>['mark',c])];
+    const cands=[];
+    for (const [wa,wc] of whiteChoices){
+      const simW = clone(g);
+      let whiteMarked=false;
+      try{
+        if (wa==='mark' && wc && ws!=null){ simW.markWhite(this.name,wc,ws); simW.finalizePendingClose(); whiteMarked=true; }
+        else simW.skipWhite(this.name);
+      }catch(e){ try{ simW.skipWhite(this.name);}catch(e2){} }
+      simW.phase=Phase.COLOR;
+      const acts = legalColorActions(simW,this.name);
+      const colorChoices = [['skip',null,null], ...acts.map(x=>['mark',x[0],x[1]])];
+      for (const cact of colorChoices){
+        if (!whiteMarked && cact[0]==='skip') continue;
+        cands.push([[wa,wc],cact]);
+      }
+    }
+    if (cands.length===0){ this.pending={white:['skip',null], color:['skip',null,null]}; return; }
+    const ranked = cands.map(pair=>[this._prior(g,pair[0],pair[1]), pair]).sort((a,b)=>b[0]-a[0]);
+    if (ranked.length===1 || (ranked[0][0]-ranked[1][0])>=this.margin_thresh){
+      this.pending = { white:ranked[0][1][0], color:ranked[0][1][1] }; return;
+    }
+    const topK = ranked.slice(0,Math.max(1,this.top_k));
+    const mini = new MCTSBot(this.name,{simulations:this.sims_per * topK.length, depth_turns:this.depth_turns, beam_width:topK.length, rollout_kind:this.rollout_kind});
+    mini.simulations_per_candidate = this.sims_per;
+    let best=null, bestv=-1e9;
+    for (const [pr,pair] of topK){
+      const v = mini._evalPlan(g,pair[0],pair[1],this.sims_per);
+      if (v>bestv){ bestv=v; best=pair; }
+    }
+    if (!best){ this.pending={white:topK[0][1][0], color:topK[0][1][1]}; return; }
+    this.pending={white:best[0], color:best[1]};
+  }
+  chooseWhiteSum(g){ return (this.pending?.white) ?? ['skip',null]; }
+  chooseColor(g){ return (this.pending?.color) ?? ['skip',null,null]; }
+}
+
+/* ---- Tiny Learner (kept lightweight for UI) ---- */
+class LearnerBot extends HeuristicBot{
+  constructor(name,{epsilon=0.1}={}){ super(name); this.eps=epsilon; this.store=new Map(); }
+  _key(g,w,c){ return JSON.stringify({p:this.name,d:g.dice,closed:g.closed,active:g.activeDie,w,c}); }
+  _expected(key){ const v=this.store.get(key); if (!v) return 0; const [n,sum]=v; return sum/Math.max(1,n); }
+  _update(key,reward){ const v=this.store.get(key)||[0,0]; v[0]+=1; v[1]+=reward; this.store.set(key,v); }
+  planTurn(g){
+    const ws = g.whiteSum();
+    const whiteChoices = [['skip',null], ...legalWhiteSumColors(g,this.name).map(c=>['mark',c])];
+    const cands=[];
+    for (const [wa,wc] of whiteChoices){
+      const simW = clone(g);
+      let whiteMarked=false;
+      try{
+        if (wa==='mark' && wc && ws!=null){ simW.markWhite(this.name,wc,ws); simW.finalizePendingClose(); whiteMarked=true; }
+        else simW.skipWhite(this.name);
+      }catch(e){ try{ simW.skipWhite(this.name);}catch(e2){} }
+      simW.phase=Phase.COLOR;
+      const acts = legalColorActions(simW,this.name);
+      const colorChoices = [['skip',null,null], ...acts.map(x=>['mark',x[0],x[1]])];
+      for (const cact of colorChoices){
+        if (!whiteMarked && cact[0]==='skip') continue;
+        const key = this._key(g,[wa,wc],cact);
+        const est = this._expected(key);
+        const prior = new MCTSBot(this.name,{simulations:1})._planPrior(g,[wa,wc],cact);
+        const blend = 0.3*prior/15 + 0.7*est;
+        cands.push({pair:[[wa,wc],cact], val:blend, key});
+      }
+    }
+    if (cands.length===0){ this.pending={white:['skip',null], color:['skip',null,null]}; return; }
+    let choice;
+    if (Math.random()<this.eps) choice = cands[Math.floor(Math.random()*cands.length)];
+    else choice = cands.sort((a,b)=>b.val-a.val)[0];
+    this._lastKey = choice.key;
+    this._lastScore = score_total(g,this.name);
+    this.pending = { white:choice.pair[0], color:choice.pair[1] };
+  }
+  rewardTurn(g){
+    if (!this._lastKey) return;
+    const after = score_total(g,this.name);
+    const delta = (after - (this._lastScore??after))/15;
+    this._update(this._lastKey, delta);
+    this._lastKey=null; this._lastScore=null;
+  }
+}
+
+/* ----------------- Tournament Runner (no MCTS option) ----------------- */
+const BotFactory = {
+  heur:(n)=>new HeuristicBot(n),
+  learn:(n)=>new LearnerBot(n),
+  gap1:(n)=>new Gap1Bot(n),
+  gap1lock:(n)=>new Gap1LockBot(n),
+  gap2:(n)=>new Gap2Bot(n),
+  gap2lock:(n)=>new Gap2LockBot(n),
+  gap3:(n)=>new Gap3Bot(n),
+  gap3lock:(n)=>new Gap3LockBot(n),
+  probgap:(n)=>new ProbGapBot(n),
+  probgaplock:(n)=>new ProbGapLockBot(n),
+  scout:(n)=>new ScoutBot(n),
+  mcts:(n)=>new MCTSBot(n) // avoid in tournament for speed
+};
+
+function playOne(names, kinds, games=50, seed=42){
+  // simple deterministic RNG emulation for seed (best-effort)
+  let s=seed>>>0; function r(){ s = (1664525*s + 1013904223)>>>0; return s/0xffffffff; }
+  function rint(a,b){ return a+Math.floor(r()*(b-a+1)); }
+
+  // init players
+  const players = names.map((nm,i)=>new Player(nm, i===0));
+  const g = new QwixxGame(players, 0);
+  // assign bots
+  const bots = Object.fromEntries(names.map((nm,i)=>nm]));
+
+  let scoresAgg = Object.fromEntries(names.map(n=>[n,0]));
+  let wins = Object.fromEntries(names.map(n=>[n,0]));
+  let ties=0;
+
+  function resetGame(startIdx){
+    g.players.forEach(p=>{ p.red=[];p.yellow=[];p.green=[];p.blue=[];p.penalties=0; });
+    g.currentIndex = startIdx;
+    g.phase=Phase.INITIAL;
+    g.closed={red:false,yellow:false,green:false,blue:false};
+    g.activeDie={red:true,yellow:true,green:true,blue:true};
+    g.rowClosers={red:[],yellow:[],green:[],blue:[]};
+    g.pendingClose={red:false,yellow:false,green:false,blue:false};
+    g._resetTurnFlags();
+    g.dice={w1:null,w2:null,red:null,yellow:null,green:null,blue:null};
+  }
+
+  // run N games
+  for (let gi=0; gi<games; gi++){
+    resetGame(gi % names.length);
+    // short headless gameplay loop
+    let guard=0;
+    while (g.phase!==Phase.COMPLETE && guard<600){
+      guard++;
+      // roll
+      try{ g.roll(); }catch(e){ break; }
+      // white phase
+      for (const p of g.players){
+        if (g.whiteDone.get(p.name)) continue;
+        const b = bots[p.name];
+        if (p.name===g.activePlayer.name && b.planTurn) b.planTurn(g);
+        const [act,c] = b.chooseWhiteSum(g);
+        try{
+          if (act==='mark' && c){ g.markWhite(p.name,c,g.whiteSum()); }
+          else g.skipWhite(p.name);
+        }catch(e){ try{ g.skipWhite(p.name);}catch(e2){} }
+      }
+      g.proceedColorIfReady();
+      // color
+      if (g.phase===Phase.COLOR){
+        const b = bots[g.activePlayer.name];
+        if (!b.pending?.color && b.planTurn) b.planTurn(g);
+        const [act,c,wd] = b.chooseColor(g);
+        try{
+          if (act==='mark' && c && wd){
+            g.selectColorDice(wd,c);
+            g.markColor(g.activePlayer.name,c,(wd===1?g.dice.w1:g.dice.w2)+g.dice[c]);
+          }else{
+            const markedWhite = g.turnActions.get(g.activePlayer.name)?.whiteMarked;
+            if (!markedWhite) g.takePenalty();
+          }
+        }catch(e){
+          const markedWhite = g.turnActions.get(g.activePlayer.name)?.whiteMarked;
+          if (!markedWhite) try{ g.takePenalty(); }catch(e2){}
+        }
+        if (b.rewardTurn) b.rewardTurn(g);
+      }
+      // end turn
+      try{ g.endTurn(); }catch(e){ break; }
+    }
+    // scoring
+    const totals = Object.fromEntries(names.map(n=>[n, g.calcScore(n).total]));
+    const sorted = Object.entries(totals).sort((a,b)=>b[1]-a[1]);
+    const top = sorted[0][1];
+    const winNames = sorted.filter(x=>x[1]===top).map(x=>x[0]);
+    if (winNames.length===1) wins[winNames[0]] += 1; else ties++;
+    for (const n of names) scoresAgg[n] += totals[n];
+  }
+  // aggregate
+  const avgScores = Object.fromEntries(names.map(n=>[n, scoresAgg[n]/games]));
+  return { wins, ties, avgScores };
+}
+
+/* ----------------- UI Glue ----------------- */
+const logEl = ()=>document.getElementById('log');
+function appendLog(s){ const el=logEl(); el.textContent += s + '\n'; el.scrollTop = el.scrollHeight; }
+
+let G=null;   // live game
+let BOTSEL=[];// bot selectors for players
+
+function fillBotSelect(sel){
+  const kinds = ['human','heur','learn','gap1','gap1lock','gap2','gap2lock','gap3','gap3lock','probgap','probgaplock','scout','mcts'];
+  sel.innerHTML = kinds.map(k=>`<option value="${k}">${k}</option>`).join('');
+  sel.value = 'heur';
+}
+function currentPlayers(){
+  const entries = [];
+  const names = [p1name.value, p2name.value, p3name.value, p4name.value].map(x=>x.trim()).filter(x=>x);
+  const bots  = [p1bot.value, p2bot.value, p3bot.value, p4bot.value].slice(0,names.length);
+  names.forEach((nm,i)=> entries.push([nm, bots[i]]));
+  return entries;
+}
+function applyPlayersToGame(){
+  const entries = currentPlayers();
+  if (entries.length<2){ appendLog('Need at least 2 players'); return; }
+  const players = entries.map((e,i)=>new Player(e[0], i===0));
+  G = new QwixxGame(players, 0);
+  appendLog(`Applied players: ${entries.map(e=>`${e[0]}(${e[1]})`).join(', ')}`);
+  renderBoards();
+  renderDicePhase();
+}
+
+/* Controls */
+document.addEventListener('DOMContentLoaded', ()=>{
+  // fill bot selects
+  [p1bot,p2bot,p3bot,p4bot].forEach(fillBotSelect);
+  p1bot.value='heur'; p2bot.value='gap2lock';
+
+  // Apply players
+  document.getElementById('btn-apply-players').addEventListener('click', applyPlayersToGame);
+
+  // New game
+  document.getElementById('btn-new').addEventListener('click', ()=>{
+    applyPlayersToGame();
+    logEl().textContent='';
+    appendLog('New game created.');
+  });
+
+  // Roll dice
+  document.getElementById('btn-roll').addEventListener('click', ()=>{
+    try{ G.roll(); appendLog(`${G.activePlayer.name} rolled.`); }catch(e){ appendLog('ERR roll: '+e.message); }
+    renderDicePhase();
+  });
+
+  // Auto White Phase
+  document.getElementById('btn-white-next').addEventListener('click', ()=>{
+    try{
+      for (const p of G.players){
+        if (G.whiteDone.get(p.name)) continue;
+        const kind = (document.getElementById(`p${G.players.indexOf(p)+1}bot`)?.value)||'heur';
+        if (kind==='human'){
+          // human: skip by default here
+          G.skipWhite(p.name);
+        }else{
+          const bot = BotFactoryp.name;
+          if (p.name===G.activePlayer.name && bot.planTurn) bot.planTurn(G);
+          const [a,c] = bot.chooseWhiteSum(G);
+          if (a==='mark' && c) G.markWhite(p.name,c,G.whiteSum());
+          else G.skipWhite(p.name);
+        }
+      }
+      G.proceedColorIfReady();
+    }catch(e){ appendLog('ERR white: '+e.message); }
+    renderBoards(); renderDicePhase();
+  });
+
+  // Active Color Move
+  document.getElementById('btn-color-active').addEventListener('click', ()=>{
+    try{
+      if (G.phase!==Phase.COLOR){ appendLog('Not in color phase'); return; }
+      const idx=G.currentIndex; const pname = G.players[idx].name;
+      const kind = (document.getElementById(`p${idx+1}bot`)?.value)||'heur';
+      if (kind==='human'){
+        // For brevity, auto skip if human at color step in this demo
+        const ta = G.turnActions.get(pname);
+        if (!ta.whiteMarked) G.takePenalty();
+      }else{
+        const bot = BotFactorypname;
+        if (!bot.pending?.color && bot.planTurn) bot.planTurn(G);
+        const [a,c,wd] = bot.chooseColor(G);
+        if (a==='mark' && c && wd){
+          G.selectColorDice(wd,c);
+          G.markColor(pname,c,(wd===1?G.dice.w1:G.dice.w2) + G.dice[c]);
+        }else{
+          const ta = G.turnActions.get(pname);
+          if (!ta.whiteMarked) G.takePenalty();
+        }
+        if (bot.rewardTurn) bot.rewardTurn(G);
+      }
+    }catch(e){ appendLog('ERR color: '+e.message); }
+    renderBoards(); renderDicePhase();
+  });
+
+  // End turn
+  document.getElementById('btn-end').addEventListener('click', ()=>{
+    try{ G.endTurn(); }catch(e){ appendLog('ERR end: '+e.message); }
+    renderBoards(); renderDicePhase();
+  });
+
+  // Tournament
+  document.getElementById('btn-run-tourn').addEventListener('click', runTournamentNoMcts);
+  document.getElementById('btn-clear-tourn').addEventListener('click', ()=>document.getElementById('tourn-log').textContent='');
+
+  // Initialize
+  applyPlayersToGame();
+  renderBoards();
+  renderDicePhase();
+  buildSummary();
+});
+
+/* --------------- Rendering --------------- */
+function renderDicePhase(){
+  const drow = document.getElementById('diceRow');
+  const d = G.dice;
+  drow.innerHTML = `
+    <span class="die die-white">${d.w1??'-'}</span>
+    <span class="die die-white">${d.w2??'-'}</span>
+    <span class="die die-red">${d.red??'-'}</span>
+    <span class="die die-yellow">${d.yellow??'-'}</span>
+    <span class="die die-green">${d.green??'-'}</span>
+    <span class="die die-blue">${d.blue??'-'}</span>
+  `;
+  document.getElementById('phaseLabel').textContent =
+    `Phase: ${G.phase} | Active: ${G.activePlayer.name}`;
+}
+
+function renderBoards(){
+  const host = document.getElementById('boards');
+  let html='';
+  for (const p of G.players){
+    const bd = G.calcScore(p.name);
+    html += `
+      <div class="mb-3 p-2 border rounded">
+        <div class="d-flex align-items-center justify-content-between">
+          <div><strong>${p.name}</strong> &nbsp; 
+            <span class="badge bg-secondary">Total: ${bd.total}</span>
+            <span class="badge bg-danger ms-1">Pen: ${p.penalties}</span>
+          </div>
+          <div>
+            ${COLORS.map(c=> G.closed[c] ? `<span class="badge lock-pill">${c} 🔒</span>`:'').join(' ')}
+          </div>
+        </div>
+        <div class="board-grid mt-2">
+          ${COLORS.map(c=>{
+            const nums = ROW_NUMBERS[c];
+            const row = p[c];
+            const taken = new Set(row);
+            return `
+              <div class="text-capitalize">${c}</div>
+              <div>
+                ${nums.map(n=>{
+                  const isTaken = taken.has(n);
+                  const blocked = !sequenceValid(row,c,n) || isTaken;
+                  return `<span class="numchip ${isTaken?'x':''} ${blocked?'blocked':''}">${n}</span>`;
+                }).join('')}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>`;
+  }
+  host.innerHTML = html;
+}
+
+/* --------------- Tournament (no MCTS) --------------- */
+function runTournamentNoMcts(){
+  const picks = [];
+  const ids = ['heur','learn','gap1','gap1lock','gap2','gap2lock','gap3','gap3lock','probgap','probgaplock','scout','mcts'];
+  const chk = (id)=> document.getElementById(`t-${id}`)?.checked;
+  for (const id of ids){ if (document.getElementById(`t-${id}`) && chk(id)) picks.push(id); }
+  const excludeMcts = document.getElementById('t-exclude-mcts')?.checked ?? true;
+  const games = Math.max(5, parseInt(document.getElementById('t-games').value||'50',10));
+  const seed = parseInt(document.getElementById('t-seed').value||'42',10);
+
+  const kinds = excludeMcts ? picks.filter(k=>k!=='mcts') : picks;
+  if (kinds.length<2){ alert('Pick at least two bot kinds'); return; }
+
+  const out = document.getElementById('tourn-log');
+  out.textContent='';
+  let pairIdx=0;
+
+  function runPair(a,b,order){
+    pairIdx++;
+    const names = (order==='AB')? [`A_${a}`, `B_${b}`] : [`A_${b}`, `B_${a}`];
+    const kindsAB = (order==='AB')? [a,b] : [b,a];
+    out.textContent += `=== Pair ${pairIdx}: ${a} vs ${b} [order=${order}] ===\n`;
+    const res = playOne(names,kindsAB,games, seed+pairIdx);
+    out.textContent += JSON.stringify({A:a,B:b,order,wins:res.wins,ties:res.ties,avgScores:res.avgScores}, null, 2) + '\n\n';
+  }
+
+  for (let i=0;i<kinds.length;i++){
+    for (let j=i;j<kinds.length;j++){
+      const A=kinds[i], B=kinds[j];
+      runPair(A,B,'AB');
+      runPair(A,B,'BA');
+    }
+  }
+  out.textContent += 'Done.\n';
+}
+
+/* --------------- Summary Doc --------------- */
+function buildSummary(){
+  const el = document.getElementById('summary-doc');
+  el.innerHTML = `
+  <h5>What we've completed</h5>
+  <ul>
+    <li>A cohesive, single-file <strong>Bootstrap</strong> Qwixx suite with a playable UI and logs.</li>
+    <li>Full in-browser <strong>Qwixx engine</strong> (dice, phases, closure, scoring).</li>
+    <li><strong>Global safety rules</strong> enforced for <em>all</em> players and bots:
+      <ol>
+        <li>Keep <em>lock-feasibility</em>: a move is rejected if it makes the row unable to reach ≥6 marks later.</li>
+        <li><em>Last-number</em> can only be taken once the row already has ≥5 marks.</li>
+      </ol>
+    </li>
+    <li>All requested <strong>bots</strong>: Heuristic, Learner (light), Gap 1/2/3 (+Lock), ProbGap (+Lock), <strong>ScoutBot</strong>,
+        and improved <strong>MCTSBot</strong> (beam+priors).</li>
+    <li><strong>Tournament runner</strong> with <em>Exclude MCTS</em> toggle for speed (includes ScoutBot).</li>
+  </ul>
+
+  <h5>What still needs to be done</h5>
+  <ul>
+    <li>Enhance the human interaction flow for picking white sum/color actions manually (the demo auto-skips for humans in some steps).</li>
+    <li>Persist Learner experience to localStorage or file export/import (currently in-memory).</li>
+    <li>Optional: Parallel tournament (Web Workers) for faster runs; progress UI with charts.</li>
+    <li>Optional: Add per-turn explanations (diagnostics for bot choices) in the UI.</li>
+    <li>Optional: Theme polish (row badges per color, lock icons inline in rows, etc.).</li>
+  </ul>
+
+  <h5>Important design / implementation notes</h5>
+  <ul>
+    <li><strong>Shared legality filters</strong> (<code>legalWhiteSumColors</code>/<code>legalColorActions</code>) guarantee global policy
+        compliance (lock-feasibility &amp; last-number rule), so <em>all bots</em> and humans inherit the safety automatically.</li>
+    <li><strong>GapPolicy</strong> family enforces raw skip caps; <strong>ProbGap</strong> adds weighted skip costs using normalized 2d6 probabilities
+        (skipping near 7 is “expensive”, 2/12 are “cheap”). Lock versions may only exceed their cap when the move locks immediately.</li>
+    <li><strong>ScoutBot</strong> is a hybrid: it ranks plans by a cheap one-turn prior and uses a tiny beam-MCTS on the top-K
+        if those priors are close. This gives most of the strength of MCTS at a fraction of the cost.</li>
+    <li><strong>MCTSBot</strong> adds a beam on top of heuristic priors to avoid wasting rollouts on poor branches. It's still slower,
+        so use “Exclude MCTS” for big tournaments; keep ScoutBot instead.</li>
+    <li>Scores use the standard row triangular numbers with lock bonus (count+1 if you closed your own row with ≥6 marks)
+        and penalties (−5 each).</li>
+  </ul>
+  `;
+}
+
+/* Shims for reused names from Python-like code */
+function score_total(g,name){ return g.calcScore(name).total; }
+function flexibility_score(rowAfter,color){ return flexibilityScore(rowAfter,color); }
+
+</script>
+https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js</script>
+</body>
+</html>

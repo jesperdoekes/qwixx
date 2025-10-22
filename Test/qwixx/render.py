@@ -18,10 +18,10 @@ SHORT_TO_COLOR = {v:k for k,v in COLOR_SHORT.items()}
 COLOR_ANSI = {'red':RED, 'yellow':YELLOW, 'green':GREEN, 'blue':BLUE}
 
 ROW_NUMBERS = {
-    'red':   list(range(2,13)),
+    'red': list(range(2,13)),
     'yellow':list(range(2,13)),
     'green': list(range(12,1,-1)),
-    'blue':  list(range(12,1,-1)),
+    'blue': list(range(12,1,-1)),
 }
 
 def number_index(color: str, number: int) -> Optional[int]:
@@ -49,7 +49,7 @@ def render_player_sheet(g: QwixxGame, player: Player) -> str:
         for n in nums:
             mk = 'X' if n in row else '.'
             marks.append(f"{n:2}:{mk}")
-        locks = '  ⛔' if g.closed_rows[color] else ''
+        locks = ' 🔔' if g.closed_rows[color] else ''
         lines.append(f"{ansi}{COLOR_SHORT[color]}{RESET}: " + ' '.join(marks) + locks)
     lines.append(f"Penalties: {player.penalties}")
     return '\n'.join(lines)
@@ -57,7 +57,7 @@ def render_player_sheet(g: QwixxGame, player: Player) -> str:
 def render_score(g: QwixxGame, player: Player) -> str:
     bd = g.calculate_score(player.name)
     return (
-        f"Score ▶ R={bd['red']} Y={bd['yellow']} G={bd['green']} B={bd['blue']} | "
+        f"Score ▶ R={bd['red']} Y={bd['yellow']} G={bd['green']} B={bd['blue']} "
         f"pen={bd['penalties']} → {BOLD}{bd['total']}{RESET}"
     )
 
@@ -65,16 +65,16 @@ def render_roll(g: QwixxGame) -> str:
     d = g.dice
     wsum = (d['white1'] or 0) + (d['white2'] or 0) if (d['white1'] and d['white2']) else None
     lines = [
-        f"White dice: [1]={d['white1']} [2]={d['white2']}  sum={wsum}",
+        f"White dice: [1]={d['white1']} [2]={d['white2']} sum={wsum}",
         "Colored dice:"
     ]
     for color in COLORS:
         if not g.active_dice[color]:
-            lines.append(f"  {COLOR_SHORT[color]}: (inactive)")
+            lines.append(f" {COLOR_SHORT[color]}: (inactive)")
             continue
         cval = d[color]
         lines.append(
-            f"  {COLOR_SHORT[color]}: {cval}  (w1+{COLOR_SHORT[color]}={ (d['white1'] or 0) + (cval or 0) }"
+            f" {COLOR_SHORT[color]}: {cval} (w1+{COLOR_SHORT[color]}={ (d['white1'] or 0) + (cval or 0) }"
             f", w2+{COLOR_SHORT[color]}={ (d['white2'] or 0) + (cval or 0) })"
         )
     return '\n'.join(lines)
@@ -101,12 +101,12 @@ def render_color_combos(g: QwixxGame, player: Player) -> str:
     for color in COLORS:
         label = COLOR_SHORT[color]
         if g.closed_rows[color] or not g.active_dice[color]:
-            lines.append(f"  {label}: inactive/closed")
+            lines.append(f" {label}: inactive/closed")
             continue
         row = getattr(player, color)
         w1 = d['white1'] + d[color]
         w2 = d['white2'] + d[color]
         v1 = '*' if (w1 not in row and sequence_valid(row, color, w1)) else ''
         v2 = '*' if (w2 not in row and sequence_valid(row, color, w2)) else ''
-        lines.append(f"  {label}: w1={w1}{v1}  w2={w2}{v2}")
+        lines.append(f" {label}: w1={w1}{v1} w2={w2}{v2}")
     return '\n'.join(lines)

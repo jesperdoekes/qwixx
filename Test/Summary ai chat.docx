@@ -1,0 +1,149 @@
+Here’s a **full summary of what happened in this chat**, including all major steps, issues, and code changes:
+
+---
+
+## ✅ **Initial Goal**
+You wanted to **build a Qwixx game with AI opponents** (bots) that can play against each other, including:
+- **HeuristicBot** (rule-based)
+- **MCTSBot** (Monte Carlo Tree Search)
+- **LearnerBot** (reinforcement learning)
+
+You provided multiple files:
+- `game.py` (core game logic)
+- `ui_cli.py` (command-line interface)
+- `ai.py` (AI bots)
+- `autoplay.py` (batch simulation)
+- `learn.py` (experience store for LearnerBot)
+- `render.py` (UI rendering helpers)
+- `cli.py` (basic CLI)
+- `__init__.py`
+
+---
+
+## ✅ **Issues Encountered**
+1. **SyntaxError in `ui_cli.py`**
+   - Extra `}` in an f-string:
+     ```python
+     print(f"{cp} [BOT] marked {cv} on {COLOR_SHORT[color]} using white{wd}.}")
+     ```
+   - **Fix:** Removed the extra brace:
+     ```python
+     print(f"{cp} [BOT] marked {cv} on {COLOR_SHORT[color]} using white{wd}.")
+     ```
+
+2. **ModuleNotFoundError**
+   - Occurred when running:
+     ```bash
+     python -m qwixx.ui_cli
+     ```
+   - **Cause:** Wrong working directory.
+   - **Fix:** Run from parent directory:
+     ```bash
+     cd ~/Documents/PWS/qwixx/Test
+     python -m qwixx.ui_cli ...
+     ```
+
+3. **LearnerBot not learning**
+   - Poor performance and no improvement over games.
+   - **Cause:** Weak reward function, coarse state representation, low exploration.
+
+4. **Autoplay argument mismatch**
+   - `play_series()` didn’t support `debug_bots` or `debug_timing`.
+   - **Fix:** Removed unsupported arguments.
+
+---
+
+## ✅ **Code Changes Made**
+### 1. **Corrected `ui_cli.py`**
+- Fixed syntax error.
+- Added startup print:
+  ```python
+  print("🚀 Starting Qwixx CLI...")
+  ```
+- Added autoplay debug print:
+  ```python
+  print("🧪 Autoplay mode triggered")
+  ```
+
+---
+
+### 2. **Created `bootstrap_qwixx.py`**
+- Entry point for autoplay tests.
+- Runs LearnerBot vs MCTSBot for N games.
+- Example:
+  ```python
+  report = play_series(
+      names=['L', 'M'],
+      bot_types={'L': 'learn', 'M': 'mcts'},
+      games=3,
+      epsilon=0.1,
+      seed=123,
+      show_each=True
+  )
+  ```
+
+---
+
+### 3. **Improved `LearnerBot` in `ai.py`**
+- **Enhancements:**
+  - Hybrid scoring: `Q-value + heuristic`
+  - Epsilon decay: `epsilon = max(0.05, epsilon * 0.99)`
+  - Enhanced reward:
+    ```python
+    reward = margin / 10.0 + (my_score / 100.0)
+    ```
+  - Logging:
+    ```python
+    print(f"[LearnerBot] chose plan {act_key} with score={score:.2f}")
+    ```
+- Full file provided with **HeuristicBot**, **MCTSBot**, and improved **LearnerBot**.
+
+---
+
+### 4. **Updated `learn.py`**
+- **FeatureHasher improvements:**
+  - Added raw dice values (`white1`, `white2`).
+  - Row frontiers as numeric values.
+  - Penalties and closed row indicators.
+  - Active dice mask.
+- Full file provided for easy replacement.
+
+---
+
+## ✅ **Analysis of Results**
+- Ran **50 games** between LearnerBot and MCTSBot.
+- **Stats:**
+  - LearnerBot wins: **7**
+  - MCTSBot wins: **43**
+  - Avg scores: LearnerBot **20.6**, MCTSBot **40.6**
+  - Avg margin: **-20**
+- **Conclusion:** LearnerBot still weak but improved slightly; needs more training and better reward shaping.
+
+---
+
+## ✅ **Visualizations**
+- Generated plots:
+  - Score trends per game.
+  - Win distribution.
+- Observed:
+  - MCTSBot dominates.
+  - LearnerBot occasionally spikes but mostly low.
+
+---
+
+## ✅ **Next Steps Suggested**
+- Run **500+ games** for better learning.
+- Tune epsilon and reward function.
+- Add batch updates and richer logging.
+- Possibly integrate neural network for Q-value approximation.
+
+---
+
+### ✅ Files Delivered in Full:
+- `ui_cli.py` (corrected)
+- `ai.py` (with improved LearnerBot)
+- `learn.py` (with richer FeatureHasher)
+- `bootstrap_qwixx.py` (entry point for autoplay)
+
+---
+

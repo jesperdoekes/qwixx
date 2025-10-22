@@ -18,8 +18,8 @@ class GameStatus(str, Enum):
     FINISHED = 'finished'
 
 COLORS = ['red','yellow','green','blue']
-UP_ROWS = {'red', 'yellow'}  # 2 -> 12
-DOWN_ROWS = {'green', 'blue'}  # 12 -> 2
+UP_ROWS = {'red', 'yellow'}      # 2 -> 12
+DOWN_ROWS = {'green', 'blue'}    # 12 -> 2
 LAST_NUMBER = {'red': 12, 'yellow': 12, 'green': 2, 'blue': 2}
 
 class GameError(Exception):
@@ -55,7 +55,6 @@ class QwixxGame:
     status: GameStatus = GameStatus.WAITING
     phase: Phase = Phase.INITIAL
     initialized: bool = False
-
     dice: Dict[str, Optional[int]] = field(default_factory=lambda: {
         'white1': None,
         'white2': None,
@@ -64,16 +63,12 @@ class QwixxGame:
         'green': None,
         'blue': None,
     })
-
     closed_rows: Dict[str, bool] = field(default_factory=lambda: {c: False for c in COLORS})
     active_dice: Dict[str, bool] = field(default_factory=lambda: {c: True for c in COLORS})
     row_closers: Dict[str, List[str]] = field(default_factory=lambda: {c: [] for c in COLORS})
-
     turn_actions: Dict[str, Dict[str, bool]] = field(default_factory=dict)
     white_phase_complete: Dict[str, bool] = field(default_factory=dict)
-
     pending_row_closures: Dict[str, bool] = field(default_factory=lambda: {c: False for c in COLORS})
-
     selected_white_die: Optional[int] = None
     selected_color: Optional[str] = None
 
