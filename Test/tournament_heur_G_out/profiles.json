@@ -1,0 +1,74 @@
+{
+  "heur_profile:old_rand07": {
+    "setup_bonus": 4.9,
+    "flex_weight": 0.23,
+    "big_skip_penalty_per_cell": 1.16,
+    "close_now_bonus": 9.25,
+    "no_lock_cap_penalty": 6.68,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "heur_profile:old_g05": {
+    "setup_bonus": 4.46,
+    "flex_weight": 0.25,
+    "big_skip_penalty_per_cell": 1.05,
+    "close_now_bonus": 10.56,
+    "no_lock_cap_penalty": 6.09,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "heur_profile:new_01": {
+    "setup_bonus": 5.42,
+    "flex_weight": 0.23,
+    "big_skip_penalty_per_cell": 1.06,
+    "close_now_bonus": 8.46,
+    "no_lock_cap_penalty": 5.53,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "heur_profile:new_02": {
+    "setup_bonus": 4.43,
+    "flex_weight": 0.24,
+    "big_skip_penalty_per_cell": 0.98,
+    "close_now_bonus": 8.17,
+    "no_lock_cap_penalty": 7.31,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "heur_profile:new_03": {
+    "setup_bonus": 4.34,
+    "flex_weight": 0.24,
+    "big_skip_penalty_per_cell": 0.99,
+    "close_now_bonus": 10.8,
+    "no_lock_cap_penalty": 5.84,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "heur_profile:new_04": {
+    "setup_bonus": 4.42,
+    "flex_weight": 0.22,
+    "big_skip_penalty_per_cell": 1.16,
+    "close_now_bonus": 9.38,
+    "no_lock_cap_penalty": 6.02,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "heur_profile:new_05": {
+    "setup_bonus": 4.46,
+    "flex_weight": 0.25,
+    "big_skip_penalty_per_cell": 1.05,
+    "close_now_bonus": 10.56,
+    "no_lock_cap_penalty": 6.09,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "heur_profile:new_06": {
+    "setup_bonus": 5.9,
+    "flex_weight": 0.2,
+    "big_skip_penalty_per_cell": 0.98,
+    "close_now_bonus": 10.76,
+    "no_lock_cap_penalty": 5.91,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  }
+}

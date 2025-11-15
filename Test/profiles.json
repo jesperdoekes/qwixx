@@ -1,0 +1,15 @@
+{
+  "g06-A": { "setup_bonus": 6.5, "flex_weight": 0.27, "big_skip_penalty_per_cell": 1.20, "close_now_bonus": 8.02, "no_lock_cap_penalty": 5.56, "min_component_value": 0.75, "combo_delta_margin": 0.25 },
+  "g06-B": { "setup_bonus": 6.0, "flex_weight": 0.25, "big_skip_penalty_per_cell": 1.20, "close_now_bonus": 7.02, "no_lock_cap_penalty": 5.06, "min_component_value": 0.75, "combo_delta_margin": 0.25 },
+  "g06-C": { "setup_bonus": 6.0, "flex_weight": 0.25, "big_skip_penalty_per_cell": 1.20, "close_now_bonus": 8.02, "no_lock_cap_penalty": 4.76, "min_component_value": 0.75, "combo_delta_margin": 0.25 },
+  "g06-D": { "setup_bonus": 5.5, "flex_weight": 0.28, "big_skip_penalty_per_cell": 1.20, "close_now_bonus": 8.02, "no_lock_cap_penalty": 5.56, "min_component_value": 0.75, "combo_delta_margin": 0.25 },
+
+  "g04-A": { "setup_bonus": 4.37, "flex_weight": 0.26, "big_skip_penalty_per_cell": 1.26, "close_now_bonus": 8.75, "no_lock_cap_penalty": 6.63, "min_component_value": 0.75, "combo_delta_margin": 0.25 },
+  "g04-B": { "setup_bonus": 4.77, "flex_weight": 0.24, "big_skip_penalty_per_cell": 1.16, "close_now_bonus": 9.95, "no_lock_cap_penalty": 7.43, "min_component_value": 0.75, "combo_delta_margin": 0.25 },
+
+  "g05-A": { "setup_bonus": 4.19, "flex_weight": 0.22, "big_skip_penalty_per_cell": 1.00, "close_now_bonus": 9.39, "no_lock_cap_penalty": 6.94, "min_component_value": 0.75, "combo_delta_margin": 0.25 },
+  "g05-B": { "setup_bonus": 4.59, "flex_weight": 0.16, "big_skip_penalty_per_cell": 1.00, "close_now_bonus": 8.69, "no_lock_cap_penalty": 7.74, "min_component_value": 0.75, "combo_delta_margin": 0.25 },
+
+  "g02-A": { "setup_bonus": 5.22, "flex_weight": 0.21, "big_skip_penalty_per_cell": 1.01, "close_now_bonus": 10.51, "no_lock_cap_penalty": 6.93, "min_component_value": 0.75, "combo_delta_margin": 0.25 },
+  "g02-B": { "setup_bonus": 4.82, "flex_weight": 0.17, "big_skip_penalty_per_cell": 1.01, "close_now_bonus": 9.71, "no_lock_cap_penalty": 6.23, "min_component_value": 0.75, "combo_delta_margin": 0.25 }
+}

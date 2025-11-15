@@ -1,0 +1,3130 @@
+[
+  {
+    "pair_index": 1,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap1",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 275,
+      "B_gap1": 121
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 54.2325,
+      "B_gap1": 40.965
+    },
+    "avg_margin": 24.9325
+  },
+  {
+    "pair_index": 2,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap1",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1": 143,
+      "B_heur_profile:old_g06": 253
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_gap1": 41.8625,
+      "B_heur_profile:old_g06": 54.255
+    },
+    "avg_margin": 24.4325
+  },
+  {
+    "pair_index": 3,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap1lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 247,
+      "B_gap1lock": 145
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 53.125,
+      "B_gap1lock": 42.1375
+    },
+    "avg_margin": 23.8275
+  },
+  {
+    "pair_index": 4,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap1lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1lock": 122,
+      "B_heur_profile:old_g06": 273
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap1lock": 40.935,
+      "B_heur_profile:old_g06": 53.385
+    },
+    "avg_margin": 23.815
+  },
+  {
+    "pair_index": 5,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap2",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 160,
+      "B_gap2": 230
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 52.4425,
+      "B_gap2": 58.8
+    },
+    "avg_margin": 22.2175
+  },
+  {
+    "pair_index": 6,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap2",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2": 244,
+      "B_heur_profile:old_g06": 152
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_gap2": 59.295,
+      "B_heur_profile:old_g06": 52.1475
+    },
+    "avg_margin": 22.4875
+  },
+  {
+    "pair_index": 7,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap2lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 131,
+      "B_gap2lock": 264
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 50.825,
+      "B_gap2lock": 61.1625
+    },
+    "avg_margin": 23.2425
+  },
+  {
+    "pair_index": 8,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap2lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2lock": 236,
+      "B_heur_profile:old_g06": 157
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_gap2lock": 57.615,
+      "B_heur_profile:old_g06": 50.955
+    },
+    "avg_margin": 22.945
+  },
+  {
+    "pair_index": 9,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 149,
+      "B_gap3": 248
+    },
+    "ties": 3,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 51.6975,
+      "B_gap3": 61.35
+    },
+    "avg_margin": 21.7575
+  },
+  {
+    "pair_index": 10,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3": 250,
+      "B_heur_profile:old_g06": 144
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_gap3": 59.9325,
+      "B_heur_profile:old_g06": 51.635
+    },
+    "avg_margin": 21.4575
+  },
+  {
+    "pair_index": 11,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 152,
+      "B_gap3lock": 239
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 51.0,
+      "B_gap3lock": 58.9475
+    },
+    "avg_margin": 21.1675
+  },
+  {
+    "pair_index": 12,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3lock": 231,
+      "B_heur_profile:old_g06": 157
+    },
+    "ties": 12,
+    "avg_scores": {
+      "A_gap3lock": 60.7075,
+      "B_heur_profile:old_g06": 52.6875
+    },
+    "avg_margin": 20.83
+  },
+  {
+    "pair_index": 13,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap_adapt3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 157,
+      "B_gap_adapt3": 236
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 52.6075,
+      "B_gap_adapt3": 60.4775
+    },
+    "avg_margin": 22.68
+  },
+  {
+    "pair_index": 14,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap_adapt3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3": 266,
+      "B_heur_profile:old_g06": 123
+    },
+    "ties": 11,
+    "avg_scores": {
+      "A_gap_adapt3": 61.055,
+      "B_heur_profile:old_g06": 50.355
+    },
+    "avg_margin": 21.19
+  },
+  {
+    "pair_index": 15,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap_adapt3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 139,
+      "B_gap_adapt3lock": 248
+    },
+    "ties": 13,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 52.6775,
+      "B_gap_adapt3lock": 61.8225
+    },
+    "avg_margin": 22.73
+  },
+  {
+    "pair_index": 16,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "gap_adapt3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3lock": 246,
+      "B_heur_profile:old_g06": 143
+    },
+    "ties": 11,
+    "avg_scores": {
+      "A_gap_adapt3lock": 61.51,
+      "B_heur_profile:old_g06": 52.9525
+    },
+    "avg_margin": 21.5925
+  },
+  {
+    "pair_index": 17,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap1",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 253,
+      "B_gap1": 141
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 54.415,
+      "B_gap1": 43.2375
+    },
+    "avg_margin": 23.7875
+  },
+  {
+    "pair_index": 18,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap1",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1": 131,
+      "B_heur_profile:old_g04": 262
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_gap1": 40.29,
+      "B_heur_profile:old_g04": 54.0175
+    },
+    "avg_margin": 25.6175
+  },
+  {
+    "pair_index": 19,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap1lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 254,
+      "B_gap1lock": 131
+    },
+    "ties": 15,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 53.0175,
+      "B_gap1lock": 40.8025
+    },
+    "avg_margin": 23.995
+  },
+  {
+    "pair_index": 20,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap1lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1lock": 142,
+      "B_heur_profile:old_g04": 248
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_gap1lock": 42.0,
+      "B_heur_profile:old_g04": 53.6625
+    },
+    "avg_margin": 23.1075
+  },
+  {
+    "pair_index": 21,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap2",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 155,
+      "B_gap2": 241
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 50.9175,
+      "B_gap2": 58.285
+    },
+    "avg_margin": 22.1375
+  },
+  {
+    "pair_index": 22,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap2",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2": 221,
+      "B_heur_profile:old_g04": 170
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_gap2": 56.8675,
+      "B_heur_profile:old_g04": 51.33
+    },
+    "avg_margin": 21.8675
+  },
+  {
+    "pair_index": 23,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap2lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 175,
+      "B_gap2lock": 224
+    },
+    "ties": 1,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 52.785,
+      "B_gap2lock": 57.94
+    },
+    "avg_margin": 22.95
+  },
+  {
+    "pair_index": 24,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap2lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2lock": 246,
+      "B_heur_profile:old_g04": 149
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap2lock": 58.0675,
+      "B_heur_profile:old_g04": 50.6775
+    },
+    "avg_margin": 22.47
+  },
+  {
+    "pair_index": 25,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 143,
+      "B_gap3": 250
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 52.73,
+      "B_gap3": 59.805
+    },
+    "avg_margin": 20.975
+  },
+  {
+    "pair_index": 26,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3": 255,
+      "B_heur_profile:old_g04": 141
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_gap3": 60.935,
+      "B_heur_profile:old_g04": 50.3325
+    },
+    "avg_margin": 22.5625
+  },
+  {
+    "pair_index": 27,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 141,
+      "B_gap3lock": 251
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 52.3525,
+      "B_gap3lock": 61.23
+    },
+    "avg_margin": 20.8025
+  },
+  {
+    "pair_index": 28,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3lock": 242,
+      "B_heur_profile:old_g04": 151
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_gap3lock": 60.58,
+      "B_heur_profile:old_g04": 53.2875
+    },
+    "avg_margin": 21.6325
+  },
+  {
+    "pair_index": 29,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap_adapt3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 145,
+      "B_gap_adapt3": 249
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 51.465,
+      "B_gap_adapt3": 59.4125
+    },
+    "avg_margin": 21.7125
+  },
+  {
+    "pair_index": 30,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap_adapt3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3": 256,
+      "B_heur_profile:old_g04": 135
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_gap_adapt3": 60.6325,
+      "B_heur_profile:old_g04": 51.33
+    },
+    "avg_margin": 22.2725
+  },
+  {
+    "pair_index": 31,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap_adapt3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 162,
+      "B_gap_adapt3lock": 235
+    },
+    "ties": 3,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 52.635,
+      "B_gap_adapt3lock": 59.6775
+    },
+    "avg_margin": 22.4925
+  },
+  {
+    "pair_index": 32,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "gap_adapt3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3lock": 255,
+      "B_heur_profile:old_g04": 140
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap_adapt3lock": 61.59,
+      "B_heur_profile:old_g04": 52.21
+    },
+    "avg_margin": 22.535
+  },
+  {
+    "pair_index": 33,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap1",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 253,
+      "B_gap1": 138
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_heur_profile:new_01": 50.8425,
+      "B_gap1": 39.735
+    },
+    "avg_margin": 22.5775
+  },
+  {
+    "pair_index": 34,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap1",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1": 147,
+      "B_heur_profile:new_01": 246
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_gap1": 41.93,
+      "B_heur_profile:new_01": 53.65
+    },
+    "avg_margin": 23.73
+  },
+  {
+    "pair_index": 35,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap1lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 263,
+      "B_gap1lock": 132
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_01": 52.4575,
+      "B_gap1lock": 40.5075
+    },
+    "avg_margin": 23.44
+  },
+  {
+    "pair_index": 36,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap1lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1lock": 145,
+      "B_heur_profile:new_01": 244
+    },
+    "ties": 11,
+    "avg_scores": {
+      "A_gap1lock": 40.775,
+      "B_heur_profile:new_01": 50.855
+    },
+    "avg_margin": 21.495
+  },
+  {
+    "pair_index": 37,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap2",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 169,
+      "B_gap2": 223
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_01": 52.115,
+      "B_gap2": 56.955
+    },
+    "avg_margin": 22.37
+  },
+  {
+    "pair_index": 38,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap2",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2": 248,
+      "B_heur_profile:new_01": 150
+    },
+    "ties": 2,
+    "avg_scores": {
+      "A_gap2": 58.235,
+      "B_heur_profile:new_01": 48.8275
+    },
+    "avg_margin": 22.2275
+  },
+  {
+    "pair_index": 39,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap2lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 133,
+      "B_gap2lock": 259
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_01": 48.545,
+      "B_gap2lock": 59.5025
+    },
+    "avg_margin": 22.3175
+  },
+  {
+    "pair_index": 40,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap2lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2lock": 241,
+      "B_heur_profile:new_01": 147
+    },
+    "ties": 12,
+    "avg_scores": {
+      "A_gap2lock": 59.26,
+      "B_heur_profile:new_01": 51.3525
+    },
+    "avg_margin": 22.7125
+  },
+  {
+    "pair_index": 41,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 131,
+      "B_gap3": 263
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_01": 49.6375,
+      "B_gap3": 60.28
+    },
+    "avg_margin": 22.3325
+  },
+  {
+    "pair_index": 42,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3": 264,
+      "B_heur_profile:new_01": 133
+    },
+    "ties": 3,
+    "avg_scores": {
+      "A_gap3": 60.2125,
+      "B_heur_profile:new_01": 48.265
+    },
+    "avg_margin": 22.6525
+  },
+  {
+    "pair_index": 43,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 134,
+      "B_gap3lock": 260
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_01": 50.315,
+      "B_gap3lock": 61.3
+    },
+    "avg_margin": 23.24
+  },
+  {
+    "pair_index": 44,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3lock": 240,
+      "B_heur_profile:new_01": 155
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap3lock": 59.8275,
+      "B_heur_profile:new_01": 51.9575
+    },
+    "avg_margin": 21.485
+  },
+  {
+    "pair_index": 45,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap_adapt3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 147,
+      "B_gap_adapt3": 251
+    },
+    "ties": 2,
+    "avg_scores": {
+      "A_heur_profile:new_01": 50.93,
+      "B_gap_adapt3": 60.31
+    },
+    "avg_margin": 21.54
+  },
+  {
+    "pair_index": 46,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap_adapt3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3": 259,
+      "B_heur_profile:new_01": 140
+    },
+    "ties": 1,
+    "avg_scores": {
+      "A_gap_adapt3": 59.7025,
+      "B_heur_profile:new_01": 50.4625
+    },
+    "avg_margin": 22.435
+  },
+  {
+    "pair_index": 47,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap_adapt3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 131,
+      "B_gap_adapt3lock": 263
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_01": 50.36,
+      "B_gap_adapt3lock": 59.605
+    },
+    "avg_margin": 21.49
+  },
+  {
+    "pair_index": 48,
+    "kindA": "heur_profile:new_01",
+    "kindB": "gap_adapt3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3lock": 248,
+      "B_heur_profile:new_01": 150
+    },
+    "ties": 2,
+    "avg_scores": {
+      "A_gap_adapt3lock": 60.25,
+      "B_heur_profile:new_01": 51.7525
+    },
+    "avg_margin": 22.4175
+  },
+  {
+    "pair_index": 49,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap1",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 254,
+      "B_gap1": 138
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_02": 53.6725,
+      "B_gap1": 42.0625
+    },
+    "avg_margin": 23.905
+  },
+  {
+    "pair_index": 50,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap1",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1": 143,
+      "B_heur_profile:new_02": 253
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_gap1": 40.675,
+      "B_heur_profile:new_02": 51.15
+    },
+    "avg_margin": 22.085
+  },
+  {
+    "pair_index": 51,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap1lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 228,
+      "B_gap1lock": 167
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_02": 52.0825,
+      "B_gap1lock": 43.5125
+    },
+    "avg_margin": 24.15
+  },
+  {
+    "pair_index": 52,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap1lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1lock": 142,
+      "B_heur_profile:new_02": 254
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_gap1lock": 42.2725,
+      "B_heur_profile:new_02": 53.0575
+    },
+    "avg_margin": 24.52
+  },
+  {
+    "pair_index": 53,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap2",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 163,
+      "B_gap2": 236
+    },
+    "ties": 1,
+    "avg_scores": {
+      "A_heur_profile:new_02": 51.705,
+      "B_gap2": 57.705
+    },
+    "avg_margin": 22.335
+  },
+  {
+    "pair_index": 54,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap2",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2": 228,
+      "B_heur_profile:new_02": 168
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_gap2": 57.76,
+      "B_heur_profile:new_02": 52.37
+    },
+    "avg_margin": 22.225
+  },
+  {
+    "pair_index": 55,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap2lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 160,
+      "B_gap2lock": 235
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_02": 51.155,
+      "B_gap2lock": 57.7675
+    },
+    "avg_margin": 21.7825
+  },
+  {
+    "pair_index": 56,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap2lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2lock": 260,
+      "B_heur_profile:new_02": 135
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap2lock": 59.94,
+      "B_heur_profile:new_02": 49.695
+    },
+    "avg_margin": 23.65
+  },
+  {
+    "pair_index": 57,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 126,
+      "B_gap3": 266
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_02": 49.91,
+      "B_gap3": 60.9025
+    },
+    "avg_margin": 23.0825
+  },
+  {
+    "pair_index": 58,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3": 266,
+      "B_heur_profile:new_02": 126
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_gap3": 60.745,
+      "B_heur_profile:new_02": 48.375
+    },
+    "avg_margin": 22.255
+  },
+  {
+    "pair_index": 59,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 139,
+      "B_gap3lock": 254
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:new_02": 50.3575,
+      "B_gap3lock": 59.575
+    },
+    "avg_margin": 21.8625
+  },
+  {
+    "pair_index": 60,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3lock": 245,
+      "B_heur_profile:new_02": 150
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap3lock": 60.45,
+      "B_heur_profile:new_02": 52.31
+    },
+    "avg_margin": 22.36
+  },
+  {
+    "pair_index": 61,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap_adapt3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 159,
+      "B_gap_adapt3": 236
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_02": 50.93,
+      "B_gap_adapt3": 58.355
+    },
+    "avg_margin": 20.855
+  },
+  {
+    "pair_index": 62,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap_adapt3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3": 263,
+      "B_heur_profile:new_02": 129
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_gap_adapt3": 60.79,
+      "B_heur_profile:new_02": 50.7075
+    },
+    "avg_margin": 21.8375
+  },
+  {
+    "pair_index": 63,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap_adapt3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 149,
+      "B_gap_adapt3lock": 247
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_heur_profile:new_02": 51.5125,
+      "B_gap_adapt3lock": 61.2925
+    },
+    "avg_margin": 22.225
+  },
+  {
+    "pair_index": 64,
+    "kindA": "heur_profile:new_02",
+    "kindB": "gap_adapt3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3lock": 241,
+      "B_heur_profile:new_02": 150
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_gap_adapt3lock": 60.5375,
+      "B_heur_profile:new_02": 52.35
+    },
+    "avg_margin": 21.6625
+  },
+  {
+    "pair_index": 65,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap1",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 253,
+      "B_gap1": 137
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_heur_profile:new_03": 55.1675,
+      "B_gap1": 43.2025
+    },
+    "avg_margin": 24.12
+  },
+  {
+    "pair_index": 66,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap1",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1": 137,
+      "B_heur_profile:new_03": 257
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_gap1": 42.145,
+      "B_heur_profile:new_03": 55.24
+    },
+    "avg_margin": 25.92
+  },
+  {
+    "pair_index": 67,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap1lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 261,
+      "B_gap1lock": 133
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_03": 54.08,
+      "B_gap1lock": 40.515
+    },
+    "avg_margin": 24.61
+  },
+  {
+    "pair_index": 68,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap1lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1lock": 144,
+      "B_heur_profile:new_03": 250
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_gap1lock": 41.8525,
+      "B_heur_profile:new_03": 52.355
+    },
+    "avg_margin": 22.8075
+  },
+  {
+    "pair_index": 69,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap2",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 170,
+      "B_gap2": 224
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_03": 52.5125,
+      "B_gap2": 57.74
+    },
+    "avg_margin": 21.5325
+  },
+  {
+    "pair_index": 70,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap2",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2": 246,
+      "B_heur_profile:new_03": 151
+    },
+    "ties": 3,
+    "avg_scores": {
+      "A_gap2": 56.78,
+      "B_heur_profile:new_03": 50.8475
+    },
+    "avg_margin": 21.9625
+  },
+  {
+    "pair_index": 71,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap2lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 165,
+      "B_gap2lock": 230
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_03": 50.505,
+      "B_gap2lock": 57.755
+    },
+    "avg_margin": 22.18
+  },
+  {
+    "pair_index": 72,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap2lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2lock": 247,
+      "B_heur_profile:new_03": 146
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_gap2lock": 58.6725,
+      "B_heur_profile:new_03": 51.0175
+    },
+    "avg_margin": 22.35
+  },
+  {
+    "pair_index": 73,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 155,
+      "B_gap3": 236
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_heur_profile:new_03": 51.095,
+      "B_gap3": 59.1975
+    },
+    "avg_margin": 22.5125
+  },
+  {
+    "pair_index": 74,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3": 244,
+      "B_heur_profile:new_03": 149
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_gap3": 61.2,
+      "B_heur_profile:new_03": 50.93
+    },
+    "avg_margin": 21.35
+  },
+  {
+    "pair_index": 75,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 134,
+      "B_gap3lock": 259
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:new_03": 50.7075,
+      "B_gap3lock": 59.94
+    },
+    "avg_margin": 21.9725
+  },
+  {
+    "pair_index": 76,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3lock": 269,
+      "B_heur_profile:new_03": 123
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_gap3lock": 62.745,
+      "B_heur_profile:new_03": 50.305
+    },
+    "avg_margin": 23.26
+  },
+  {
+    "pair_index": 77,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap_adapt3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 153,
+      "B_gap_adapt3": 239
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_03": 52.1075,
+      "B_gap_adapt3": 60.7425
+    },
+    "avg_margin": 22.71
+  },
+  {
+    "pair_index": 78,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap_adapt3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3": 246,
+      "B_heur_profile:new_03": 152
+    },
+    "ties": 2,
+    "avg_scores": {
+      "A_gap_adapt3": 58.93,
+      "B_heur_profile:new_03": 51.2375
+    },
+    "avg_margin": 21.4525
+  },
+  {
+    "pair_index": 79,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap_adapt3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 137,
+      "B_gap_adapt3lock": 256
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:new_03": 51.87,
+      "B_gap_adapt3lock": 60.5675
+    },
+    "avg_margin": 22.2725
+  },
+  {
+    "pair_index": 80,
+    "kindA": "heur_profile:new_03",
+    "kindB": "gap_adapt3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3lock": 243,
+      "B_heur_profile:new_03": 148
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_gap_adapt3lock": 60.615,
+      "B_heur_profile:new_03": 52.05
+    },
+    "avg_margin": 21.735
+  },
+  {
+    "pair_index": 81,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap1",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 271,
+      "B_gap1": 121
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_04": 53.885,
+      "B_gap1": 40.685
+    },
+    "avg_margin": 22.455
+  },
+  {
+    "pair_index": 82,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap1",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1": 129,
+      "B_heur_profile:new_04": 266
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap1": 42.6625,
+      "B_heur_profile:new_04": 56.0525
+    },
+    "avg_margin": 24.405
+  },
+  {
+    "pair_index": 83,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap1lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 256,
+      "B_gap1lock": 139
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_04": 53.4675,
+      "B_gap1lock": 40.335
+    },
+    "avg_margin": 25.5225
+  },
+  {
+    "pair_index": 84,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap1lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1lock": 128,
+      "B_heur_profile:new_04": 267
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap1lock": 40.795,
+      "B_heur_profile:new_04": 54.3075
+    },
+    "avg_margin": 24.3475
+  },
+  {
+    "pair_index": 85,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap2",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 156,
+      "B_gap2": 236
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_04": 52.085,
+      "B_gap2": 59.29
+    },
+    "avg_margin": 23.21
+  },
+  {
+    "pair_index": 86,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap2",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2": 231,
+      "B_heur_profile:new_04": 160
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_gap2": 58.9475,
+      "B_heur_profile:new_04": 51.965
+    },
+    "avg_margin": 23.5575
+  },
+  {
+    "pair_index": 87,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap2lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 153,
+      "B_gap2lock": 244
+    },
+    "ties": 3,
+    "avg_scores": {
+      "A_heur_profile:new_04": 51.2525,
+      "B_gap2lock": 56.8175
+    },
+    "avg_margin": 23.17
+  },
+  {
+    "pair_index": 88,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap2lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2lock": 229,
+      "B_heur_profile:new_04": 165
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_gap2lock": 57.195,
+      "B_heur_profile:new_04": 52.22
+    },
+    "avg_margin": 21.225
+  },
+  {
+    "pair_index": 89,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 124,
+      "B_gap3": 271
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_04": 50.0775,
+      "B_gap3": 60.64
+    },
+    "avg_margin": 21.3875
+  },
+  {
+    "pair_index": 90,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3": 241,
+      "B_heur_profile:new_04": 154
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap3": 59.985,
+      "B_heur_profile:new_04": 52.7575
+    },
+    "avg_margin": 21.1525
+  },
+  {
+    "pair_index": 91,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 154,
+      "B_gap3lock": 241
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_04": 52.0775,
+      "B_gap3lock": 59.665
+    },
+    "avg_margin": 20.7475
+  },
+  {
+    "pair_index": 92,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3lock": 240,
+      "B_heur_profile:new_04": 153
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_gap3lock": 59.31,
+      "B_heur_profile:new_04": 52.1525
+    },
+    "avg_margin": 22.7225
+  },
+  {
+    "pair_index": 93,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap_adapt3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 175,
+      "B_gap_adapt3": 220
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_04": 53.3925,
+      "B_gap_adapt3": 59.15
+    },
+    "avg_margin": 21.9475
+  },
+  {
+    "pair_index": 94,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap_adapt3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3": 245,
+      "B_heur_profile:new_04": 150
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap_adapt3": 61.31,
+      "B_heur_profile:new_04": 53.3075
+    },
+    "avg_margin": 21.1825
+  },
+  {
+    "pair_index": 95,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap_adapt3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 157,
+      "B_gap_adapt3lock": 236
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:new_04": 53.9375,
+      "B_gap_adapt3lock": 60.4425
+    },
+    "avg_margin": 22.28
+  },
+  {
+    "pair_index": 96,
+    "kindA": "heur_profile:new_04",
+    "kindB": "gap_adapt3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3lock": 244,
+      "B_heur_profile:new_04": 149
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_gap_adapt3lock": 60.21,
+      "B_heur_profile:new_04": 50.6325
+    },
+    "avg_margin": 22.3475
+  },
+  {
+    "pair_index": 97,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap1",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 255,
+      "B_gap1": 141
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_heur_profile:new_05": 54.1325,
+      "B_gap1": 43.2325
+    },
+    "avg_margin": 23.81
+  },
+  {
+    "pair_index": 98,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap1",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1": 118,
+      "B_heur_profile:new_05": 275
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_gap1": 39.8275,
+      "B_heur_profile:new_05": 55.0075
+    },
+    "avg_margin": 25.525
+  },
+  {
+    "pair_index": 99,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap1lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 269,
+      "B_gap1lock": 127
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_heur_profile:new_05": 54.17,
+      "B_gap1lock": 40.3575
+    },
+    "avg_margin": 25.1125
+  },
+  {
+    "pair_index": 100,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap1lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1lock": 141,
+      "B_heur_profile:new_05": 255
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_gap1lock": 41.665,
+      "B_heur_profile:new_05": 52.33
+    },
+    "avg_margin": 22.485
+  },
+  {
+    "pair_index": 101,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap2",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 155,
+      "B_gap2": 241
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_heur_profile:new_05": 50.7025,
+      "B_gap2": 58.0075
+    },
+    "avg_margin": 21.235
+  },
+  {
+    "pair_index": 102,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap2",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2": 215,
+      "B_heur_profile:new_05": 180
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap2": 55.8325,
+      "B_heur_profile:new_05": 51.645
+    },
+    "avg_margin": 21.9125
+  },
+  {
+    "pair_index": 103,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap2lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 158,
+      "B_gap2lock": 237
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_05": 53.56,
+      "B_gap2lock": 59.3625
+    },
+    "avg_margin": 22.4075
+  },
+  {
+    "pair_index": 104,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap2lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2lock": 230,
+      "B_heur_profile:new_05": 167
+    },
+    "ties": 3,
+    "avg_scores": {
+      "A_gap2lock": 58.92,
+      "B_heur_profile:new_05": 51.415
+    },
+    "avg_margin": 22.93
+  },
+  {
+    "pair_index": 105,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 158,
+      "B_gap3": 236
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_05": 52.345,
+      "B_gap3": 58.9825
+    },
+    "avg_margin": 22.6525
+  },
+  {
+    "pair_index": 106,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3": 252,
+      "B_heur_profile:new_05": 139
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_gap3": 61.34,
+      "B_heur_profile:new_05": 52.32
+    },
+    "avg_margin": 22.19
+  },
+  {
+    "pair_index": 107,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 122,
+      "B_gap3lock": 270
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_05": 48.5025,
+      "B_gap3lock": 61.86
+    },
+    "avg_margin": 22.7625
+  },
+  {
+    "pair_index": 108,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3lock": 246,
+      "B_heur_profile:new_05": 147
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_gap3lock": 59.15,
+      "B_heur_profile:new_05": 50.3075
+    },
+    "avg_margin": 22.0275
+  },
+  {
+    "pair_index": 109,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap_adapt3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 135,
+      "B_gap_adapt3": 262
+    },
+    "ties": 3,
+    "avg_scores": {
+      "A_heur_profile:new_05": 51.3075,
+      "B_gap_adapt3": 61.28
+    },
+    "avg_margin": 21.8275
+  },
+  {
+    "pair_index": 110,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap_adapt3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3": 246,
+      "B_heur_profile:new_05": 150
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_gap_adapt3": 61.2625,
+      "B_heur_profile:new_05": 51.93
+    },
+    "avg_margin": 21.9675
+  },
+  {
+    "pair_index": 111,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap_adapt3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 141,
+      "B_gap_adapt3lock": 258
+    },
+    "ties": 1,
+    "avg_scores": {
+      "A_heur_profile:new_05": 51.49,
+      "B_gap_adapt3lock": 60.835
+    },
+    "avg_margin": 22.575
+  },
+  {
+    "pair_index": 112,
+    "kindA": "heur_profile:new_05",
+    "kindB": "gap_adapt3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3lock": 254,
+      "B_heur_profile:new_05": 137
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_gap_adapt3lock": 61.005,
+      "B_heur_profile:new_05": 51.5975
+    },
+    "avg_margin": 21.1925
+  },
+  {
+    "pair_index": 113,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap1",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 258,
+      "B_gap1": 136
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_06": 52.8425,
+      "B_gap1": 39.975
+    },
+    "avg_margin": 24.1925
+  },
+  {
+    "pair_index": 114,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap1",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1": 144,
+      "B_heur_profile:new_06": 251
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_gap1": 41.985,
+      "B_heur_profile:new_06": 53.21
+    },
+    "avg_margin": 23.68
+  },
+  {
+    "pair_index": 115,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap1lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 249,
+      "B_gap1lock": 141
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_heur_profile:new_06": 51.29,
+      "B_gap1lock": 41.465
+    },
+    "avg_margin": 22.67
+  },
+  {
+    "pair_index": 116,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap1lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap1lock": 121,
+      "B_heur_profile:new_06": 278
+    },
+    "ties": 1,
+    "avg_scores": {
+      "A_gap1lock": 39.55,
+      "B_heur_profile:new_06": 53.205
+    },
+    "avg_margin": 24.09
+  },
+  {
+    "pair_index": 117,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap2",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 154,
+      "B_gap2": 242
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_heur_profile:new_06": 51.8975,
+      "B_gap2": 59.6275
+    },
+    "avg_margin": 22.045
+  },
+  {
+    "pair_index": 118,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap2",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2": 251,
+      "B_heur_profile:new_06": 140
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_gap2": 60.1475,
+      "B_heur_profile:new_06": 51.865
+    },
+    "avg_margin": 22.5025
+  },
+  {
+    "pair_index": 119,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap2lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 155,
+      "B_gap2lock": 240
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_06": 50.9875,
+      "B_gap2lock": 57.345
+    },
+    "avg_margin": 21.8525
+  },
+  {
+    "pair_index": 120,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap2lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap2lock": 229,
+      "B_heur_profile:new_06": 169
+    },
+    "ties": 2,
+    "avg_scores": {
+      "A_gap2lock": 57.8475,
+      "B_heur_profile:new_06": 51.2975
+    },
+    "avg_margin": 22.375
+  },
+  {
+    "pair_index": 121,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 137,
+      "B_gap3": 257
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_06": 50.6375,
+      "B_gap3": 59.77
+    },
+    "avg_margin": 20.4875
+  },
+  {
+    "pair_index": 122,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3": 243,
+      "B_heur_profile:new_06": 151
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_gap3": 60.235,
+      "B_heur_profile:new_06": 51.7725
+    },
+    "avg_margin": 22.1475
+  },
+  {
+    "pair_index": 123,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 128,
+      "B_gap3lock": 267
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_06": 50.15,
+      "B_gap3lock": 61.0475
+    },
+    "avg_margin": 21.1775
+  },
+  {
+    "pair_index": 124,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap3lock": 230,
+      "B_heur_profile:new_06": 160
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_gap3lock": 60.8475,
+      "B_heur_profile:new_06": 52.6975
+    },
+    "avg_margin": 22.585
+  },
+  {
+    "pair_index": 125,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap_adapt3",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 132,
+      "B_gap_adapt3": 262
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_06": 49.4775,
+      "B_gap_adapt3": 60.9925
+    },
+    "avg_margin": 22.36
+  },
+  {
+    "pair_index": 126,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap_adapt3",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3": 259,
+      "B_heur_profile:new_06": 137
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_gap_adapt3": 59.3125,
+      "B_heur_profile:new_06": 48.7775
+    },
+    "avg_margin": 22.44
+  },
+  {
+    "pair_index": 127,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap_adapt3lock",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 157,
+      "B_gap_adapt3lock": 242
+    },
+    "ties": 1,
+    "avg_scores": {
+      "A_heur_profile:new_06": 51.71,
+      "B_gap_adapt3lock": 60.74
+    },
+    "avg_margin": 21.285
+  },
+  {
+    "pair_index": 128,
+    "kindA": "heur_profile:new_06",
+    "kindB": "gap_adapt3lock",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_gap_adapt3lock": 278,
+      "B_heur_profile:new_06": 119
+    },
+    "ties": 3,
+    "avg_scores": {
+      "A_gap_adapt3lock": 62.535,
+      "B_heur_profile:new_06": 50.41
+    },
+    "avg_margin": 22.385
+  },
+  {
+    "pair_index": 129,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:old_g04",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 207,
+      "B_heur_profile:old_g04": 184
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 52.27,
+      "B_heur_profile:old_g04": 50.425
+    },
+    "avg_margin": 20.525
+  },
+  {
+    "pair_index": 130,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:old_g04",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 207,
+      "B_heur_profile:old_g06": 187
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 52.5275,
+      "B_heur_profile:old_g06": 52.31
+    },
+    "avg_margin": 19.5575
+  },
+  {
+    "pair_index": 131,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_01",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 194,
+      "B_heur_profile:new_01": 200
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 52.0025,
+      "B_heur_profile:new_01": 51.26
+    },
+    "avg_margin": 20.0275
+  },
+  {
+    "pair_index": 132,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_01",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 176,
+      "B_heur_profile:old_g06": 220
+    },
+    "ties": 4,
+    "avg_scores": {
+      "A_heur_profile:new_01": 50.4275,
+      "B_heur_profile:old_g06": 52.5675
+    },
+    "avg_margin": 19.75
+  },
+  {
+    "pair_index": 133,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_02",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 200,
+      "B_heur_profile:new_02": 193
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 52.095,
+      "B_heur_profile:new_02": 49.985
+    },
+    "avg_margin": 20.595
+  },
+  {
+    "pair_index": 134,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_02",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 189,
+      "B_heur_profile:old_g06": 201
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_heur_profile:new_02": 49.3725,
+      "B_heur_profile:old_g06": 51.3375
+    },
+    "avg_margin": 19.29
+  },
+  {
+    "pair_index": 135,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_03",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 203,
+      "B_heur_profile:new_03": 186
+    },
+    "ties": 11,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 52.3875,
+      "B_heur_profile:new_03": 51.445
+    },
+    "avg_margin": 19.5825
+  },
+  {
+    "pair_index": 136,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_03",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 199,
+      "B_heur_profile:old_g06": 199
+    },
+    "ties": 2,
+    "avg_scores": {
+      "A_heur_profile:new_03": 51.97,
+      "B_heur_profile:old_g06": 52.095
+    },
+    "avg_margin": 19.32
+  },
+  {
+    "pair_index": 137,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_04",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 201,
+      "B_heur_profile:new_04": 187
+    },
+    "ties": 12,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 53.065,
+      "B_heur_profile:new_04": 52.6725
+    },
+    "avg_margin": 20.7025
+  },
+  {
+    "pair_index": 138,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_04",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 195,
+      "B_heur_profile:old_g06": 204
+    },
+    "ties": 1,
+    "avg_scores": {
+      "A_heur_profile:new_04": 50.82,
+      "B_heur_profile:old_g06": 51.0075
+    },
+    "avg_margin": 22.1575
+  },
+  {
+    "pair_index": 139,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_05",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 209,
+      "B_heur_profile:new_05": 185
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 53.095,
+      "B_heur_profile:new_05": 50.385
+    },
+    "avg_margin": 19.38
+  },
+  {
+    "pair_index": 140,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_05",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 197,
+      "B_heur_profile:old_g06": 197
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_05": 51.0,
+      "B_heur_profile:old_g06": 51.31
+    },
+    "avg_margin": 19.65
+  },
+  {
+    "pair_index": 141,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_06",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g06": 194,
+      "B_heur_profile:new_06": 200
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:old_g06": 51.455,
+      "B_heur_profile:new_06": 52.52
+    },
+    "avg_margin": 21.415
+  },
+  {
+    "pair_index": 142,
+    "kindA": "heur_profile:old_g06",
+    "kindB": "heur_profile:new_06",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 206,
+      "B_heur_profile:old_g06": 188
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_06": 50.8125,
+      "B_heur_profile:old_g06": 49.51
+    },
+    "avg_margin": 19.7375
+  },
+  {
+    "pair_index": 143,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_01",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 212,
+      "B_heur_profile:new_01": 181
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 52.5,
+      "B_heur_profile:new_01": 50.68
+    },
+    "avg_margin": 19.125
+  },
+  {
+    "pair_index": 144,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_01",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 177,
+      "B_heur_profile:old_g04": 217
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_01": 50.6725,
+      "B_heur_profile:old_g04": 52.075
+    },
+    "avg_margin": 19.5075
+  },
+  {
+    "pair_index": 145,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_02",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 186,
+      "B_heur_profile:new_02": 208
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 51.4825,
+      "B_heur_profile:new_02": 51.555
+    },
+    "avg_margin": 20.3725
+  },
+  {
+    "pair_index": 146,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_02",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 188,
+      "B_heur_profile:old_g04": 202
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_heur_profile:new_02": 49.3475,
+      "B_heur_profile:old_g04": 50.5275
+    },
+    "avg_margin": 18.975
+  },
+  {
+    "pair_index": 147,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_03",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 194,
+      "B_heur_profile:new_03": 189
+    },
+    "ties": 17,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 50.585,
+      "B_heur_profile:new_03": 50.8575
+    },
+    "avg_margin": 19.1425
+  },
+  {
+    "pair_index": 148,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_03",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 181,
+      "B_heur_profile:old_g04": 211
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_03": 49.645,
+      "B_heur_profile:old_g04": 52.08
+    },
+    "avg_margin": 19.57
+  },
+  {
+    "pair_index": 149,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_04",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 192,
+      "B_heur_profile:new_04": 202
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 50.335,
+      "B_heur_profile:new_04": 52.52
+    },
+    "avg_margin": 19.835
+  },
+  {
+    "pair_index": 150,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_04",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 188,
+      "B_heur_profile:old_g04": 198
+    },
+    "ties": 14,
+    "avg_scores": {
+      "A_heur_profile:new_04": 51.29,
+      "B_heur_profile:old_g04": 51.9625
+    },
+    "avg_margin": 18.4925
+  },
+  {
+    "pair_index": 151,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_05",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 212,
+      "B_heur_profile:new_05": 181
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 52.1875,
+      "B_heur_profile:new_05": 51.1175
+    },
+    "avg_margin": 18.875
+  },
+  {
+    "pair_index": 152,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_05",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 202,
+      "B_heur_profile:old_g04": 191
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:new_05": 52.0425,
+      "B_heur_profile:old_g04": 51.445
+    },
+    "avg_margin": 18.5825
+  },
+  {
+    "pair_index": 153,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_06",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:old_g04": 184,
+      "B_heur_profile:new_06": 211
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:old_g04": 50.765,
+      "B_heur_profile:new_06": 51.94
+    },
+    "avg_margin": 19.855
+  },
+  {
+    "pair_index": 154,
+    "kindA": "heur_profile:old_g04",
+    "kindB": "heur_profile:new_06",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 207,
+      "B_heur_profile:old_g04": 190
+    },
+    "ties": 3,
+    "avg_scores": {
+      "A_heur_profile:new_06": 51.62,
+      "B_heur_profile:old_g04": 51.8975
+    },
+    "avg_margin": 19.3575
+  },
+  {
+    "pair_index": 155,
+    "kindA": "heur_profile:new_01",
+    "kindB": "heur_profile:new_02",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 199,
+      "B_heur_profile:new_02": 191
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_heur_profile:new_01": 51.0775,
+      "B_heur_profile:new_02": 50.175
+    },
+    "avg_margin": 18.4675
+  },
+  {
+    "pair_index": 156,
+    "kindA": "heur_profile:new_01",
+    "kindB": "heur_profile:new_02",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 215,
+      "B_heur_profile:new_01": 179
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_02": 51.985,
+      "B_heur_profile:new_01": 50.5325
+    },
+    "avg_margin": 19.7425
+  },
+  {
+    "pair_index": 157,
+    "kindA": "heur_profile:new_01",
+    "kindB": "heur_profile:new_03",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 178,
+      "B_heur_profile:new_03": 216
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_01": 49.7575,
+      "B_heur_profile:new_03": 51.5225
+    },
+    "avg_margin": 19.375
+  },
+  {
+    "pair_index": 158,
+    "kindA": "heur_profile:new_01",
+    "kindB": "heur_profile:new_03",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 199,
+      "B_heur_profile:new_01": 196
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_03": 52.1075,
+      "B_heur_profile:new_01": 50.2125
+    },
+    "avg_margin": 20.345
+  },
+  {
+    "pair_index": 159,
+    "kindA": "heur_profile:new_01",
+    "kindB": "heur_profile:new_04",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 209,
+      "B_heur_profile:new_04": 186
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_01": 50.6625,
+      "B_heur_profile:new_04": 49.7775
+    },
+    "avg_margin": 20.09
+  },
+  {
+    "pair_index": 160,
+    "kindA": "heur_profile:new_01",
+    "kindB": "heur_profile:new_04",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 200,
+      "B_heur_profile:new_01": 192
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_04": 52.57,
+      "B_heur_profile:new_01": 51.165
+    },
+    "avg_margin": 20.78
+  },
+  {
+    "pair_index": 161,
+    "kindA": "heur_profile:new_01",
+    "kindB": "heur_profile:new_05",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 166,
+      "B_heur_profile:new_05": 222
+    },
+    "ties": 12,
+    "avg_scores": {
+      "A_heur_profile:new_01": 48.965,
+      "B_heur_profile:new_05": 52.0075
+    },
+    "avg_margin": 20.7025
+  },
+  {
+    "pair_index": 162,
+    "kindA": "heur_profile:new_01",
+    "kindB": "heur_profile:new_05",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 198,
+      "B_heur_profile:new_01": 194
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_05": 52.4475,
+      "B_heur_profile:new_01": 51.27
+    },
+    "avg_margin": 21.3875
+  },
+  {
+    "pair_index": 163,
+    "kindA": "heur_profile:new_01",
+    "kindB": "heur_profile:new_06",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_01": 200,
+      "B_heur_profile:new_06": 191
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_heur_profile:new_01": 50.7825,
+      "B_heur_profile:new_06": 50.175
+    },
+    "avg_margin": 20.3825
+  },
+  {
+    "pair_index": 164,
+    "kindA": "heur_profile:new_01",
+    "kindB": "heur_profile:new_06",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 196,
+      "B_heur_profile:new_01": 199
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_06": 51.145,
+      "B_heur_profile:new_01": 51.8475
+    },
+    "avg_margin": 22.0625
+  },
+  {
+    "pair_index": 165,
+    "kindA": "heur_profile:new_02",
+    "kindB": "heur_profile:new_03",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 184,
+      "B_heur_profile:new_03": 211
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_02": 50.9975,
+      "B_heur_profile:new_03": 52.845
+    },
+    "avg_margin": 19.5425
+  },
+  {
+    "pair_index": 166,
+    "kindA": "heur_profile:new_02",
+    "kindB": "heur_profile:new_03",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 201,
+      "B_heur_profile:new_02": 190
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_heur_profile:new_03": 51.3325,
+      "B_heur_profile:new_02": 50.345
+    },
+    "avg_margin": 20.3825
+  },
+  {
+    "pair_index": 167,
+    "kindA": "heur_profile:new_02",
+    "kindB": "heur_profile:new_04",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 195,
+      "B_heur_profile:new_04": 195
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_heur_profile:new_02": 51.545,
+      "B_heur_profile:new_04": 52.315
+    },
+    "avg_margin": 19.035
+  },
+  {
+    "pair_index": 168,
+    "kindA": "heur_profile:new_02",
+    "kindB": "heur_profile:new_04",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 214,
+      "B_heur_profile:new_02": 176
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_heur_profile:new_04": 52.335,
+      "B_heur_profile:new_02": 50.26
+    },
+    "avg_margin": 18.79
+  },
+  {
+    "pair_index": 169,
+    "kindA": "heur_profile:new_02",
+    "kindB": "heur_profile:new_05",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 193,
+      "B_heur_profile:new_05": 197
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_heur_profile:new_02": 50.8125,
+      "B_heur_profile:new_05": 50.77
+    },
+    "avg_margin": 20.2425
+  },
+  {
+    "pair_index": 170,
+    "kindA": "heur_profile:new_02",
+    "kindB": "heur_profile:new_05",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 202,
+      "B_heur_profile:new_02": 191
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:new_05": 51.4875,
+      "B_heur_profile:new_02": 50.28
+    },
+    "avg_margin": 20.6175
+  },
+  {
+    "pair_index": 171,
+    "kindA": "heur_profile:new_02",
+    "kindB": "heur_profile:new_06",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_02": 199,
+      "B_heur_profile:new_06": 194
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:new_02": 50.8775,
+      "B_heur_profile:new_06": 51.335
+    },
+    "avg_margin": 20.5375
+  },
+  {
+    "pair_index": 172,
+    "kindA": "heur_profile:new_02",
+    "kindB": "heur_profile:new_06",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 198,
+      "B_heur_profile:new_02": 193
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_heur_profile:new_06": 49.96,
+      "B_heur_profile:new_02": 50.3475
+    },
+    "avg_margin": 19.4025
+  },
+  {
+    "pair_index": 173,
+    "kindA": "heur_profile:new_03",
+    "kindB": "heur_profile:new_04",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 199,
+      "B_heur_profile:new_04": 193
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_03": 50.9125,
+      "B_heur_profile:new_04": 52.975
+    },
+    "avg_margin": 19.6575
+  },
+  {
+    "pair_index": 174,
+    "kindA": "heur_profile:new_03",
+    "kindB": "heur_profile:new_04",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 202,
+      "B_heur_profile:new_03": 188
+    },
+    "ties": 10,
+    "avg_scores": {
+      "A_heur_profile:new_04": 51.735,
+      "B_heur_profile:new_03": 49.9975
+    },
+    "avg_margin": 20.5075
+  },
+  {
+    "pair_index": 175,
+    "kindA": "heur_profile:new_03",
+    "kindB": "heur_profile:new_05",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 195,
+      "B_heur_profile:new_05": 203
+    },
+    "ties": 2,
+    "avg_scores": {
+      "A_heur_profile:new_03": 51.0875,
+      "B_heur_profile:new_05": 50.915
+    },
+    "avg_margin": 20.5175
+  },
+  {
+    "pair_index": 176,
+    "kindA": "heur_profile:new_03",
+    "kindB": "heur_profile:new_05",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 208,
+      "B_heur_profile:new_03": 186
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_05": 51.5425,
+      "B_heur_profile:new_03": 49.6125
+    },
+    "avg_margin": 18.0
+  },
+  {
+    "pair_index": 177,
+    "kindA": "heur_profile:new_03",
+    "kindB": "heur_profile:new_06",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_03": 194,
+      "B_heur_profile:new_06": 200
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_03": 51.7225,
+      "B_heur_profile:new_06": 51.3325
+    },
+    "avg_margin": 18.52
+  },
+  {
+    "pair_index": 178,
+    "kindA": "heur_profile:new_03",
+    "kindB": "heur_profile:new_06",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 174,
+      "B_heur_profile:new_03": 221
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_06": 49.795,
+      "B_heur_profile:new_03": 52.2175
+    },
+    "avg_margin": 18.8575
+  },
+  {
+    "pair_index": 179,
+    "kindA": "heur_profile:new_04",
+    "kindB": "heur_profile:new_05",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 202,
+      "B_heur_profile:new_05": 192
+    },
+    "ties": 6,
+    "avg_scores": {
+      "A_heur_profile:new_04": 52.3125,
+      "B_heur_profile:new_05": 51.8725
+    },
+    "avg_margin": 19.47
+  },
+  {
+    "pair_index": 180,
+    "kindA": "heur_profile:new_04",
+    "kindB": "heur_profile:new_05",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 202,
+      "B_heur_profile:new_04": 191
+    },
+    "ties": 7,
+    "avg_scores": {
+      "A_heur_profile:new_05": 52.65,
+      "B_heur_profile:new_04": 51.9375
+    },
+    "avg_margin": 19.9375
+  },
+  {
+    "pair_index": 181,
+    "kindA": "heur_profile:new_04",
+    "kindB": "heur_profile:new_06",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_04": 203,
+      "B_heur_profile:new_06": 192
+    },
+    "ties": 5,
+    "avg_scores": {
+      "A_heur_profile:new_04": 50.7025,
+      "B_heur_profile:new_06": 50.8625
+    },
+    "avg_margin": 18.77
+  },
+  {
+    "pair_index": 182,
+    "kindA": "heur_profile:new_04",
+    "kindB": "heur_profile:new_06",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 201,
+      "B_heur_profile:new_04": 190
+    },
+    "ties": 9,
+    "avg_scores": {
+      "A_heur_profile:new_06": 51.0775,
+      "B_heur_profile:new_04": 50.75
+    },
+    "avg_margin": 19.4825
+  },
+  {
+    "pair_index": 183,
+    "kindA": "heur_profile:new_05",
+    "kindB": "heur_profile:new_06",
+    "order": "AB",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_05": 210,
+      "B_heur_profile:new_06": 182
+    },
+    "ties": 8,
+    "avg_scores": {
+      "A_heur_profile:new_05": 50.7225,
+      "B_heur_profile:new_06": 49.2475
+    },
+    "avg_margin": 21.02
+  },
+  {
+    "pair_index": 184,
+    "kindA": "heur_profile:new_05",
+    "kindB": "heur_profile:new_06",
+    "order": "BA",
+    "games": 400,
+    "wins": {
+      "A_heur_profile:new_06": 182,
+      "B_heur_profile:new_05": 207
+    },
+    "ties": 11,
+    "avg_scores": {
+      "A_heur_profile:new_06": 49.8725,
+      "B_heur_profile:new_05": 51.5575
+    },
+    "avg_margin": 19.775
+  }
+]

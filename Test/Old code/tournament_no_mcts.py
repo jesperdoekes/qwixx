@@ -3,23 +3,20 @@
 from pathlib import Path
 import itertools, json
 from typing import Dict, List
+
 from qwixx.autoplay import play_series
 
-# Bots to include (no MCTS here)
-# - gap1 / gap1lock / gap2 / gap2lock
-# - probgap (OLD) / probgap2 (NEW)
-# - probgaplock (OLD) / probgaplock2 (NEW)
-# - heur_strong (rebalance of the heuristic bot)
+# Bots to include (no 'mcts' here)
 BOT_KINDS = [
-    "gap1", "gap1lock", "gap2", "gap2lock",
-    "probgap", "probgap2",
-    "probgaplock", "probgaplock2",
-    "heur_strong",
+    "heur", "learn",
+    "gap1", "gap1lock", "gap2", "gap2lock", "gap3", "gap3lock",
+    "probgap", "probgaplock",
+    "scout"
 ]
 
 GAMES = 500
 SEED_BASE = 4242
-LEARN_FILE = "./qwixx_data/learner.json"    # ignored here
+LEARN_FILE = "./qwixx_data/learner.json"
 OUTDIR = Path("./tournament_out_no_mcts")
 OUTDIR.mkdir(parents=True, exist_ok=True)
 
@@ -33,15 +30,15 @@ def run_pair(kindA: str, kindB: str, order: str, idx: int):
     else:
         names = [f"A_{kindB}", f"B_{kindA}"]
         kinds = [kindB, kindA]
+
     bot_types = make_bot_types(names, kinds)
     seed = SEED_BASE + idx
     report = play_series(
         names=names,
         bot_types=bot_types,
         games=GAMES,
-        # MCTS args are ignored since none of these bots use MCTS
-        mcts_sims=0,
-        mcts_depth=0,
+        mcts_sims=200,      # ignored (no mcts present)
+        mcts_depth=2,
         seed=seed,
         show_each=False,
         progress_interval=0.5,
@@ -78,6 +75,7 @@ def main():
                 "avg_margin": rep["avg_margin"]
             }, indent=2))
             print()
+
     out_json = OUTDIR / "results.json"
     with out_json.open("w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)

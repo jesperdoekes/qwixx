@@ -1,0 +1,56 @@
+{
+  "g06": {
+    "setup_bonus": 6.0,
+    "flex_weight": 0.25,
+    "big_skip_penalty_per_cell": 1.2,
+    "close_now_bonus": 8.02,
+    "no_lock_cap_penalty": 5.56,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "g01": {
+    "setup_bonus": 4.8,
+    "flex_weight": 0.17,
+    "big_skip_penalty_per_cell": 1.1,
+    "close_now_bonus": 10.04,
+    "no_lock_cap_penalty": 7.16,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "g02": {
+    "setup_bonus": 4.82,
+    "flex_weight": 0.17,
+    "big_skip_penalty_per_cell": 1.01,
+    "close_now_bonus": 10.51,
+    "no_lock_cap_penalty": 6.93,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "g03": {
+    "setup_bonus": 5.89,
+    "flex_weight": 0.17,
+    "big_skip_penalty_per_cell": 1.28,
+    "close_now_bonus": 9.31,
+    "no_lock_cap_penalty": 7.97,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "g04": {
+    "setup_bonus": 4.37,
+    "flex_weight": 0.24,
+    "big_skip_penalty_per_cell": 1.26,
+    "close_now_bonus": 9.95,
+    "no_lock_cap_penalty": 7.43,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "g05": {
+    "setup_bonus": 4.19,
+    "flex_weight": 0.16,
+    "big_skip_penalty_per_cell": 1.0,
+    "close_now_bonus": 9.39,
+    "no_lock_cap_penalty": 7.74,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  }
+}

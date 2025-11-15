@@ -1,0 +1,83 @@
+{
+  "rand01": {
+    "setup_bonus": 4.39,
+    "flex_weight": 0.16,
+    "big_skip_penalty_per_cell": 1.2,
+    "close_now_bonus": 9.48,
+    "no_lock_cap_penalty": 7.76,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "rand02": {
+    "setup_bonus": 4.75,
+    "flex_weight": 0.24,
+    "big_skip_penalty_per_cell": 0.98,
+    "close_now_bonus": 10.91,
+    "no_lock_cap_penalty": 6.28,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "rand03": {
+    "setup_bonus": 3.99,
+    "flex_weight": 0.19,
+    "big_skip_penalty_per_cell": 0.96,
+    "close_now_bonus": 10.61,
+    "no_lock_cap_penalty": 5.77,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "rand04": {
+    "setup_bonus": 5.35,
+    "flex_weight": 0.15,
+    "big_skip_penalty_per_cell": 1.23,
+    "close_now_bonus": 9.2,
+    "no_lock_cap_penalty": 5.94,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "rand05": {
+    "setup_bonus": 5.78,
+    "flex_weight": 0.23,
+    "big_skip_penalty_per_cell": 1.27,
+    "close_now_bonus": 9.34,
+    "no_lock_cap_penalty": 5.99,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "rand06": {
+    "setup_bonus": 4.63,
+    "flex_weight": 0.18,
+    "big_skip_penalty_per_cell": 1.03,
+    "close_now_bonus": 9.8,
+    "no_lock_cap_penalty": 7.06,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "rand07": {
+    "setup_bonus": 4.9,
+    "flex_weight": 0.23,
+    "big_skip_penalty_per_cell": 1.16,
+    "close_now_bonus": 9.25,
+    "no_lock_cap_penalty": 6.68,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "rand08": {
+    "setup_bonus": 5.12,
+    "flex_weight": 0.17,
+    "big_skip_penalty_per_cell": 1.1,
+    "close_now_bonus": 9.38,
+    "no_lock_cap_penalty": 7.18,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  },
+  "hand_v1": {
+    "setup_bonus": 4.5,
+    "flex_weight": 0.18,
+    "big_skip_penalty_per_cell": 1.1,
+    "close_now_bonus": 9.0,
+    "no_lock_cap_penalty": 6.0,
+    "min_component_value": 0.75,
+    "combo_delta_margin": 0.25
+  }
+}

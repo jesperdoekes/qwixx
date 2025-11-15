@@ -5,20 +5,8 @@ import random, time, sys
 
 from .game import QwixxGame, Player, GameError, GameStatus, Phase
 from .ai import (
-    # Heuristics
-    HeuristicBot, HeuristicStrongBot, HeurProfileBot,
-    # Search / hybrid
-    MCTSBot, LearnerBot, ScoutBot,
-    # Helpers
-    legal_color_actions,
-    # Gap policy families
-    Gap1Bot, Gap1LockBot, Gap2Bot, Gap2LockBot, Gap3Bot, Gap3LockBot,
-    # Probability-aware gaps (old/new)
-    ProbGapBot, ProbGapLockBot, ProbGap2Bot, ProbGap2LockBot, 
-    # adaptive Bots
-    GapAdaptive1Bot, GapAdaptive1LockBot,
-    GapAdaptive2Bot, GapAdaptive2LockBot,
-    GapAdaptive3Bot, GapAdaptive3LockBot,
+    HeuristicBot, MCTSBot, LearnerBot, legal_color_actions,
+    Gap1Bot, Gap1LockBot, Gap2Bot, Gap2LockBot
 )
 
 def _apply_white_for_all(g: QwixxGame, bots: Dict[str, object]):
@@ -42,10 +30,9 @@ def _apply_white_for_all(g: QwixxGame, bots: Dict[str, object]):
             else:
                 g.skip_white_sum(p.name)
         except GameError:
-            try:
-                g.skip_white_sum(p.name)
-            except GameError:
-                pass
+            try: g.skip_white_sum(p.name)
+            except GameError: pass
+
     g.proceed_to_color_phase_if_ready()
 
 def _apply_color_for_active(g: QwixxGame, bots: Dict[str, object]):
@@ -90,83 +77,6 @@ def _fmt_hms(seconds: float) -> str:
     if h > 0: return f"{h:02d}:{m:02d}:{s:02d}"
     return f"{m:02d}:{s:02d}"
 
-def _build_bot(name: str, kind_str: str,
-               mcts_sims: int, mcts_depth: int,
-               epsilon: float, learn_file: Optional[str]) -> object:
-    """
-    Bot factory: supports heur/heur_strong/heur_profile:<prof>, learn, mcts,
-    gap1/gap1lock/gap2/gap2lock/gap3/gap3lock,
-    probgap/probgaplock (old), probgap2/probgaplock2 (new), scout.
-    """
-    # Preserve the original string for prefix parsing (do not lowercase profiles)
-    kind_raw = kind_str or 'heur'
-    if kind_raw.startswith('heur_profile:'):
-        profile = kind_raw.split(':', 1)[1]
-        return HeurProfileBot(name=name, profile=profile)
-
-    # For all other kinds we can safely lowercase
-    kind = kind_raw.lower()
-
-    if kind == 'heur':
-        return HeuristicBot(name)
-    if kind == 'heur_strong':
-        return HeuristicStrongBot(name)
-    if kind == 'mcts':
-        return MCTSBot(name, simulations=mcts_sims, depth_turns=mcts_depth)
-    if kind == 'learn':
-        return LearnerBot(name, epsilon=epsilon, store_path=(learn_file or './qwixx_data/learner.json'))
-
-    # Gap policies
-    if kind == 'gap1':
-        return Gap1Bot(name)
-    if kind == 'gap1lock':
-        return Gap1LockBot(name)
-    if kind == 'gap2':
-        return Gap2Bot(name)
-    if kind == 'gap2lock':
-        return Gap2LockBot(name)
-    if kind == 'gap3':
-        return Gap3Bot(name)
-    if kind == 'gap3lock':
-        return Gap3LockBot(name)
-    if kind == 'gap_adapt1':
-        from .ai import GapAdaptive1Bot
-        return GapAdaptive1Bot(name)
-    if kind == 'gap_adapt1lock':
-        from .ai import GapAdaptive1LockBot
-        return GapAdaptive1LockBot(name)
-    if kind == 'gap_adapt2':
-        from .ai import GapAdaptive2Bot
-        return GapAdaptive2Bot(name)
-    if kind == 'gap_adapt2lock':
-        from .ai import GapAdaptive2LockBot
-        return GapAdaptive2LockBot(name)
-    if kind == 'gap_adapt3':
-        from .ai import GapAdaptive3Bot
-        return GapAdaptive3Bot(name)
-    if kind == 'gap_adapt3lock':
-        from .ai import GapAdaptive3LockBot
-        return GapAdaptive3LockBot(name)
-
-    # Probability-aware (old)
-    if kind == 'probgap':
-        return ProbGapBot(name)
-    if kind == 'probgaplock':
-        return ProbGapLockBot(name)
-
-    # Probability-aware (new)
-    if kind == 'probgap2':
-        return ProbGap2Bot(name)
-    if kind == 'probgaplock2':
-        return ProbGap2LockBot(name)
-
-    # Hybrid scout
-    if kind == 'scout':
-        return ScoutBot(name)
-
-    # Fallback
-    return HeuristicBot(name)
-
 def play_one_game(names: List[str],
                   bot_types: Dict[str, str],
                   mcts_sims: int = 400,
@@ -184,15 +94,23 @@ def play_one_game(names: List[str],
     g = QwixxGame(game_id='auto', players=players, current_player=names[start_index])
     g.select_first_player(names[start_index])
 
-    # Build bots with the new factory
     bots: Dict[str, object] = {}
     for n in names:
-        kind_str = bot_types.get(n, 'heur')
-        bots[n] = _build_bot(
-            name=n, kind_str=kind_str,
-            mcts_sims=mcts_sims, mcts_depth=mcts_depth,
-            epsilon=epsilon, learn_file=learn_file
-        )
+        kind = bot_types.get(n, 'heur').lower()
+        if kind == 'mcts':
+            bots[n] = MCTSBot(n, simulations=mcts_sims, depth_turns=mcts_depth)
+        elif kind == 'learn':
+            bots[n] = LearnerBot(n, epsilon=epsilon, store_path=(learn_file or './qwixx_data/learner.json'))
+        elif kind == 'gap1':
+            bots[n] = Gap1Bot(n)
+        elif kind == 'gap1lock':
+            bots[n] = Gap1LockBot(n)
+        elif kind == 'gap2':
+            bots[n] = Gap2Bot(n)
+        elif kind == 'gap2lock':
+            bots[n] = Gap2LockBot(n)
+        else:
+            bots[n] = HeuristicBot(n)
 
     guard_turns = 0
     while g.status != GameStatus.FINISHED:
@@ -201,16 +119,13 @@ def play_one_game(names: List[str],
             g.roll_dice(active)
         except GameError:
             break
-
         _apply_white_for_all(g, bots)
         if g.phase == Phase.COLOR_DICE:
             _apply_color_for_active(g, bots)
-
         try:
             g.end_turn(active)
         except GameError:
             break
-
         guard_turns += 1
         if guard_turns > 500:
             break
@@ -246,7 +161,6 @@ def play_series(names: List[str],
     ties = 0
     margins: List[int] = []
     score_sums = {n: 0 for n in names}
-
     t0 = time.time()
     last_tick = 0.0
 
@@ -269,7 +183,6 @@ def play_series(names: List[str],
         per_game_seed = base_rng.randint(0, 2**31 - 1) if seed is not None else None
         # Schedule epsilon (for learners)
         eps_now = max(epsilon_end, epsilon * (epsilon_decay ** gi))
-
         t_start = time.time()
         res = play_one_game(
             names=names,
@@ -282,7 +195,6 @@ def play_series(names: List[str],
             learn_file=learn_file
         )
         t_end = time.time()
-
         for n in names:
             score_sums[n] += res['scores'][n]
         margins.append(res['margin'])
@@ -303,5 +215,4 @@ def play_series(names: List[str],
 
     avg_scores = {n: (score_sums[n] / games if games > 0 else 0.0) for n in names}
     avg_margin = (sum(margins) / len(margins)) if margins else 0.0
-
     return {'games': games, 'wins': wins, 'ties': ties, 'avg_scores': avg_scores, 'avg_margin': avg_margin, 'margins': margins}
